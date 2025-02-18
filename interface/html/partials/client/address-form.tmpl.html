@@ -1,0 +1,117 @@
+{{define "address-form"}}
+<form id="form" class="my-10 pr-20" method="post" novalidate>
+  <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+  <div class="space-y-5 w-full">
+    <div class='flex flex-col'>
+      <label for="fullName" class="text-sm font-medium">
+        Nome completo<span class="text-sm text-red-500">*</span>
+      </label>
+      {{with .Form.FieldErrors.fullName}}
+      <label for="fullName" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <input id="fullName" name="fullName" maxlength="50" type="text" value="{{.Form.FullName}}" autofocus
+        placeholder="Fulano de Tal" class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+    </div>
+    <div class='flex flex-col'>
+      <label for="cep" class="text-sm font-medium">
+        CEP<span class="text-sm text-red-500">*</span>
+      </label>
+      {{with .Form.FieldErrors.cep}}
+      <label for="cep" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <span class="text-neutral-500 text-xs">
+        Preencha o CEP para completar o cadastro.
+      </span>
+      <input id="cep" name="cep" maxlength="9" type="tel" value="{{.Form.CEP}}" placeholder="00000-000"
+        oninput="formatCep();" class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+    </div>
+    <div class='flex flex-col'>
+      <label for="number" class="text-sm font-medium">
+        Número<span class="text-sm text-red-500">*</span>
+      </label>
+      {{with .Form.FieldErrors.number}}
+      <label for="number" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <input id="number" name="number" type="number" value="{{.Form.Number}}" placeholder="00"
+        class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+    </div>
+    <div class='flex flex-col'>
+      <label for="complement" class="text-sm font-medium">
+        Complemento
+      </label>
+      {{with .Form.FieldErrors.complement}}
+      <label for="complement" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <input id="complement" name="complement" maxlength="50" type="text" value="{{.Form.Complement}}"
+        placeholder="Apartamento, casa, etc"
+        class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+    </div>
+    <div class='flex flex-col'>
+      <label for="city" class="text-sm font-medium">
+        Ponto de referência
+      </label>
+      {{with .Form.FieldErrors.reference}}
+      <label for="reference" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <input id="reference" name="reference" maxlength="50" type="text" value="{{.Form.Reference}}"
+        placeholder="Ponto de referência"
+        class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+    </div>
+    <div class='flex flex-col'>
+      <label for="street" class="text-sm font-medium">
+        Rua<span class="text-sm text-red-500">*</span>
+      </label>
+      {{with .Form.FieldErrors.street}}
+      <label for="street" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <input id="street" name="street" maxlength="50" type="text" value="{{.Form.Street}}" placeholder="Rua" readonly
+        class="bg-neutral-100 text-neutral-600 px-4 py-1.5 rounded">
+    </div>
+    <div class='flex flex-col'>
+      <label for="number" class="text-sm font-medium">
+        Bairro<span class="text-sm text-red-500">*</span>
+      </label>
+      {{with .Form.FieldErrors.district}}
+      <label for="district" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <input id="district" name="district" maxlength="50" type="text" value="{{.Form.District}}" placeholder="Bairro" readonly
+        class="bg-neutral-100 text-neutral-600 px-4 py-1.5 rounded">
+    </div>
+    <div class='flex flex-col'>
+      <label for="city" class="text-sm font-medium">
+        Cidade<span class="text-sm text-red-500">*</span>
+      </label>
+      {{with .Form.FieldErrors.city}}
+      <label for="city" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <input id="city" name="city" maxlength="50" type="text" value="{{.Form.City}}" placeholder="Cidade" readonly
+        class="bg-neutral-100 text-neutral-600 px-4 py-1.5 rounded">
+    </div>
+    <div class='flex flex-col'>
+      <label for="uf" class="text-sm font-medium">
+        UF<span class="text-sm text-red-500">*</span>
+      </label>
+      {{with .Form.FieldErrors.uf}}
+      <label for="uf" class='text-red-500 text-sm'>{{.}}</label>
+      {{end}}
+      <input id="uf" name="uf" maxlength="50" type="text" value="{{.Form.UF}}" placeholder="UF" readonly
+        class="bg-neutral-100 text-neutral-600 px-4 py-1.5 rounded">
+    </div>
+
+    {{template "success" .}}
+    {{template "error" .}}
+
+    <div class="flex items-center justify-center gap-3">
+      <a href="/meu-perfil/enderecos" class="text-neutral-500 text-sm hover:underline">
+        Voltar
+      </a>
+
+      <button type="submit"
+        class="w-fit text-white bg-accent font-medium rounded-full text-sm px-16 py-2.5 text-center my-4
+      hover:bg-neutral-700 focus:ring-2 focus:outline-none focus:ring-blue-400 dark:bg-accent-dark dark:text-neutral-800 dark:hover:bg-neutral-200">
+        Salvar
+      </button>
+    </div>
+  </div>
+</form>
+{{end}}

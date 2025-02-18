@@ -1,0 +1,102 @@
+{{define "header"}}
+<header class="bg-white w-full shadow-sm sticky top-0 z-50">
+  <nav class="relative flex items-center justify-between max-w-4xl mx-auto">
+    <a href="/" class="w-fit">
+      <img src="/static/img/logoipsum-358.svg" alt="Logo" class="w-28">
+    </a>
+
+    <ul class="flex items-center justify-between gap-3">
+      <li class="border-b-2 border-transparent">
+        <span class="">
+          Lançamentos
+        </span>
+      </li>
+      <li class="group py-8 border-b-2 border-transparent hover:border-neutral-900">
+        <a href="/c/masculino" class="desktop-item">Masculino</a>
+        <div
+          class="absolute left-0 w-fit py-8 top-16 opacity-0 invisible translate-y-3 group-hover:translate-y-0 group-hover:visible group-hover:opacity-100 transition-all">
+          <div class="bg-white px-10 py-5 flex gap-20 justify-evenly w-fit shadow">
+            {{range .ProductCategories}}
+            {{if eq .ParentCategoryID 1}}
+            <div class="w-[calc(25% - 30%)]">
+              <h1 class="text-lg font-medium tracking-wide">{{.Name}}</h1>
+              <ul class="my-3 text-neutral-500">
+                <li><a href="#">Graphics</a></li>
+                <li><a href="#">Vectors</a></li>
+                <li><a href="#">Business cards</a></li>
+                <li><a href="#">Custom logo</a></li>
+              </ul>
+            </div>
+            {{end}}
+            {{end}}
+          </div>
+        </div>
+      </li>
+      <li class="group py-8 border-b-2 border-transparent hover:border-neutral-900">
+        <a href="/c/feminino" class="desktop-item">Feminino</a>
+        <div
+          class="absolute left-0 w-fit py-8 top-16 opacity-0 invisible translate-y-3 group-hover:translate-y-0 group-hover:visible group-hover:opacity-100 transition-all">
+          <div class="bg-white px-10 py-5 flex gap-20 justify-evenly w-fit shadow">
+            {{range .ProductCategories}}
+            {{if eq .ParentCategoryID 2}}
+            <div class="w-[calc(25% - 30%)]">
+              <h1 class="text-lg font-medium tracking-wide">{{.Name}}</h1>
+              <ul class="my-3 text-neutral-500">
+                <li><a href="#">Graphics</a></li>
+                <li><a href="#">Vectors</a></li>
+                <li><a href="#">Business cards</a></li>
+                <li><a href="#">Custom logo</a></li>
+              </ul>
+            </div>
+            {{end}}
+            {{end}}
+          </div>
+        </div>
+      </li>
+      <li class="border-b-2 border-transparent">
+        <a href="/colecoes">
+          Coleções
+        </a>
+      </li>
+    </ul>
+
+    <div class="flex items-center gap-5">
+      <form action="/search" method="get">
+        <label for="q" class="flex items-center relative">
+          <input type="search" name="q" id="q" placeholder="Buscar..." value="{{.SearchQuery}}" maxlength="100"
+            class="py-2 px-5 bg-neutral-200 rounded-full">
+          <button type="submit" class="absolute right-4">
+            <img src="/static/icons/search-normal-1.svg" alt="buscar" class="w-5">
+          </button>
+        </label>
+      </form>
+
+      {{if eq .User.RoleID 1}}
+      <a href="http://admin.{{.Domain}}" target="_blank">Dash</a>
+      {{end}}
+
+      <div class="flex items-center space-x-4">
+        <a href="/meu-perfil">
+          <img src="/static/icons/user.svg" alt="Meu perfil">
+        </a>
+        {{if .IsAuthenticated}}
+        <a href="/meu-perfil/lista-de-desejos">
+          <img src="/static/icons/heart.svg" alt="Favoritos">
+        </a>
+        {{end}}
+        <a href="/carrinho">
+          <img src="/static/icons/shopping-cart-outline.svg" alt="Carrinho">
+        </a>
+        {{if .IsAuthenticated}}
+        <form action="/logout" method="post" onsubmit="return confirm('Tem certeza que deseja sair?')">
+          <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+          <button type="submit">
+            Sair
+          </button>
+        </form>
+        {{end}}
+      </div>
+    </div>
+  </nav>
+</header>
+{{end}}

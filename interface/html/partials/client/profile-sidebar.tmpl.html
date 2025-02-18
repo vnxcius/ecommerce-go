@@ -1,0 +1,51 @@
+{{define "profile-sidebar"}}
+<ul class="space-y-3 mx-8 w-max">
+  <li>
+    <a href="/meu-perfil" class="flex items-center gap-3 text-xl px-5 py-1.5 rounded-full hover:bg-neutral-100">
+      <img src="/static/icons/user.svg" alt="" class="w-5">
+      Meu perfil
+    </a>
+  </li>
+  <li>
+    <a href="/meu-perfil/alterar-senha" class="flex items-center gap-3 text-xl px-5 py-1.5 rounded-full hover:bg-neutral-100">
+      <img src="/static/icons/edit.svg" alt="" class="w-5 grayscale brightness-0">
+      Alterar senha
+    </a>
+  </li>
+  <li>
+    <a href="/meu-perfil/pedidos" class="flex items-center gap-3 text-xl px-5 py-1.5 rounded-full hover:bg-neutral-100">
+      <img src="/static/icons/shopping-cart-outline.svg" alt="" class="w-5">
+      Pedidos
+    </a>
+  </li>
+  <li>
+    <a href="/meu-perfil/lista-de-desejos"
+      class="flex items-center gap-3 text-xl px-5 py-1.5 rounded-full hover:bg-neutral-100">
+      <img src="/static/icons/heart.svg" alt="" class="w-5">
+      Lista de desejos
+    </a>
+  </li>
+  <li>
+    <a href="/meu-perfil/enderecos"
+      class="flex items-center gap-3 text-xl px-5 py-1.5 rounded-full hover:bg-neutral-100">
+      <img src="/static/icons/location.svg" alt="" class="w-5">
+      Endereços
+    </a>
+  </li>
+  <li>
+    <form action="/logout" method="post">
+      <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+      <button class="flex items-center gap-3 text-red-500 px-5 py-1.5 w-full rounded-full hover:bg-red-100">
+        <img src="/static/icons/logout-red.svg" alt="" class="w-5">
+        Sair da conta
+      </button>
+    </form>
+  </li>
+  <li>
+    <a href="/meu-perfil/deletar-conta" class="flex items-center text-sm text-red-500 my-5 px-5 hover:underline">
+      <img src="/static/icons/exclamation.svg" alt="" class="w-5">
+      Deletar minha conta
+    </a>
+  </li>
+</ul>
+{{end}}

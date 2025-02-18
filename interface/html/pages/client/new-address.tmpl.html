@@ -1,0 +1,58 @@
+{{define "title"}}Novo Endereço{{end}}
+{{define "main"}}
+{{template "header" .}}
+
+<section class="max-w-6xl my-16 mx-auto">
+  <div class="flex divide-x">
+    <div class="w-2/3 pr-20">
+      <h1 class="text-3xl font-light">
+        Novo endereço
+      </h1>
+
+      {{template "address-form" .}}
+    </div>
+    <div class="w-1/3">
+      {{template "profile-sidebar" .}}
+    </div>
+  </div>
+</section>
+{{template "footer" .}}
+<script src="/static/js/form-formatter.js"></script>
+<script>
+  function getAddress(cep) {
+    fetch("https://viacep.com.br/ws/" + cep + "/json/")
+    .then(response => response.json())
+    .then(data => {
+      if (data.erro) {
+        document.getElementById('street').value = 'CEP INVÁLIDO';
+        document.getElementById('district').value = 'CEP INVÁLIDO';
+        document.getElementById('city').value = 'CEP INVÁLIDO';
+        document.getElementById('uf').value = 'CEP INVÁLIDO';
+        return
+      }
+      document.getElementById('street').value = data.logradouro;
+      document.getElementById('district').value = data.bairro;
+      document.getElementById('city').value = data.localidade;
+      document.getElementById('uf').value = data.uf;
+    })
+  }
+
+  const input = document.getElementById('cep');
+  input.addEventListener('input', (event) => {
+    const cep = event.target.value;
+    if (cep.length > 8) {
+      getAddress(cep);
+    }
+
+    if (cep.length == 0) {
+      document.getElementById('street').value = '';
+      document.getElementById('district').value = '';
+      document.getElementById('city').value = '';
+      document.getElementById('uf').value = '';
+    }
+
+    formatCep();
+  });
+
+</script>
+{{end}}

@@ -1,0 +1,28 @@
+{{define "product-releases"}}
+{{range .ProductsView}}
+<div class="flex flex-col items-start">
+  <a href="/p/{{.Slug}}">
+    <img src="/static/img/product-placeholder.webp" alt="{{.Name}}"
+      class="w-72 h-96 object-cover transition-all hover:brightness-75">
+    <!--
+     used to show the product image uploaded in cloudinary
+      <img src="https://res.cloudinary.com/loremcommerce/image/upload/{{.Image}}" alt="{{.Name}}"
+      class="w-72 h-96 object-cover transition-all hover:brightness-75"> -->
+  </a>
+  <a href="/p/{{.Slug}}" class="flex flex-col items-start w-72 text-wrap">
+    <span class="text-lg capitalize my-1">{{.Name}}</span>
+  </a>
+  <div class="flex flex-col gap-2">
+    {{if .Discount}}
+    <span class="text-neutral-400 text-sm line-through">R$ {{ convertPrice .Price}}</span>
+    <span class="flex items-end gap-3">
+      R$ {{calculateDiscount .Price .Discount}}
+      <span class="text-green-500">{{.Discount}}% off</span>
+    </span>
+    {{else}}
+    R$ {{convertPrice .Price}}
+    {{end}}
+  </div>
+</div>
+{{end}}
+{{end}}

@@ -1,0 +1,9 @@
+{{define "success"}}
+{{with .SuccessFlash}}
+<div title="{{.}}"
+  class="bg-green-100 text-green-500 first-letter:capitalize font-medium flex items-center gap-5 justify-between rounded-md py-2.5 px-5 dark:bg-green-300 dark:text-green-700">
+  <span>{{.}}</span>
+  <img src="/static/icons/check.svg" alt="">
+</div>
+{{end}}
+{{end}}

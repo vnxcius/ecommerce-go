@@ -1,0 +1,26 @@
+{{define "title"}}Carrinho{{end}}
+
+{{define "main"}}
+{{template "header" .}}
+
+<section class="max-w-6xl mx-auto my-16">
+  <div class="flex items-center gap-2 mb-10">
+    <img src="/static/icons/shopping-cart-outline.svg" alt="carrinho icon">
+    <h1 class="text-2xl">Carrinho</h1>
+    <p>(<span>2</span>)</p>
+  </div>
+
+  <div class="divide-y">
+    {{template "cart-card" .}}
+    {{template "cart-card" .}}
+  </div>
+
+  <p class="text-2xl tracking-wide font-semibold my-3 text-neutral-700">Subtotal: <span class="font-normal">R$ 128</span></p>
+
+  <a href="/finalizar-compra" class="block w-fit mx-auto bg-accent text-neutral-50 text-center rounded-full px-8 py-2 my-6 font-semibold">
+    Finalizar compra
+  </a>
+</section>
+
+{{template "footer" .}}
+{{end}}

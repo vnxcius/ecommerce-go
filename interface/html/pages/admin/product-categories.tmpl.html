@@ -1,0 +1,179 @@
+{{define "title"}}Categorias{{end}}
+
+{{define "main"}}
+<div class="flex">
+  {{template "sidebar" .}}
+  <div id="modal-container"></div>
+  <section class="my-8 mx-28 w-full flex justify-between gap-10 divide-x dark:divide-neutral-900">
+    <section class="w-1/3">
+      <a href="/produtos"
+        class="w-fit flex items-center gap-2 cursor-pointer px-3 py-0.5 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-800">
+        <img src="/static/icons/arrow-left.svg" class="w-4 dark:brightness-[6]" alt='Voltar' />
+        <span class="dark:text-neutral-300">Produtos</span>
+      </a>
+
+      <div class="mt-6 mb-2">
+        <h3 class="text-xl font-semibold text-neutral-600 dark:text-neutral-500">
+          Selecione a imagem da categoria
+          <span class="text-xs text-neutral-500 dark:text-neutral-600">
+            (opcional)
+          </span>
+        </h3>
+        {{with .Form.FieldErrors.image}}
+        <label for="image" class='text-red-500 text-sm'>{{.}}</label>
+        {{end}}
+      </div>
+
+      <label for="image" class="cursor-pointer">
+        <div
+          class="bg-neutral-200 border border-neutral-300 h-2/3 rounded-md flex flex-col overflow-hidden justify-center relative dark:bg-neutral-915 dark:border-neutral-800">
+          <img alt="" id="imagePreview" class="absolute w-full h-full rounded-md object-cover z-10 hidden"
+            loading="lazy">
+          <img src="/static/icons/gallery-add.svg" alt="Adicionar"
+            class="w-fit h-fit mx-auto brightness-[3] dark:brightness-100">
+        </div>
+      </label>
+    </section>
+
+    <section class="w-2/3 pl-10">
+      <div class="my-4 flex items-center gap-2">
+        <h2 class="text-xl min-w-max font-semibold text-neutral-600 dark:text-neutral-500">
+          Adicionar nova categoria
+        </h2>
+        <hr class="w-full dark:border-neutral-900">
+      </div>
+
+      <form method="POST" class="space-y-3" enctype="multipart/form-data">
+        <!-- Incluir CSRF Token -->
+        <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+        <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg, image/webp" hidden>
+
+        <div class="flex flex-col">
+          <label for="name" class='text-sm font-medium dark:text-neutral-500'>
+            Nome
+          </label>
+          {{with .Form.FieldErrors.name}}
+          <label for="name" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input type="text" name="name" id="name" placeholder="e.g. Camisetas" autocomplete="off" autofocus
+            value="{{.Form.Name}}"
+            class="w-full p-2 bg-white border border-neutral-300 rounded font-normal focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700" />
+        </div>
+        <div class="flex flex-col">
+          {{with .Form.FieldErrors.description}}
+          <label for="description" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <label for="description">
+            <span class="text-sm font-medium dark:text-neutral-500">
+              Descrição
+            </span>
+            <span class="text-xs text-neutral-500 dark:text-neutral-600">
+              (opcional)
+            </span>
+          </label>
+          <input type="text" name="description" id="description" placeholder="e.g. Camisetas 100% algodão"
+            value="{{.Form.Description}}"
+            class="w-full p-2 bg-white border border-neutral-300 rounded focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700">
+        </div>
+
+        <div class="flex gap-5 items-end">
+          <button type="submit"
+            class="bg-accent text-neutral-50 text-center rounded-md px-8 py-2 font-semibold dark:bg-accent-dark dark:text-neutral-800">
+            Cadastrar categoria
+          </button>
+
+          <div class="flex flex-col min-w-max">
+            <label for="parent">
+              <span class="text-sm font-medium dark:text-neutral-500">
+                Esta categoria pertence a outra categoria?
+              </span>
+            </label>
+            <select name="parent" id="parent"
+              class="w-fit p-2 bg-white border border-neutral-300 rounded focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700">
+              <option value="" selected>Não</option>
+              {{range .ProductCategories}}
+              <option value="{{.ID}}">{{.Name}}</option>
+              {{end}}
+            </select>
+          </div>
+
+          {{template "success" .}}
+          {{template "error" .}}
+
+        </div>
+      </form>
+
+      <div class="mt-10">
+        <div class="flex items-center gap-2 my-4">
+          <h2 class="min-w-max text-xl font-semibold text-neutral-600 dark:text-neutral-500">
+            Categorias disponíveis
+          </h2>
+          <hr class="w-full dark:border-t-neutral-900">
+          <span class="text-sm min-w-max text-neutral-500 dark:text-neutral-600">
+            {{len .ProductCategories}} categorias encontradas
+          </span>
+        </div>
+        <div
+          class="bg-accent text-sm text-white font-medium rounded-lg grid grid-cols-5 justify-center place-items-center py-3 mb-3 sticky top-3 z-40 shadow dark:bg-neutral-900 dark:text-neutral-500">
+          <h3 class="px-7 col-span-2">
+            Nome
+          </h3>
+          <h3 class="px-7">
+            Descrição
+          </h3>
+          <h3 class="px-7 col-span-2">
+            Pertence a
+          </h3>
+        </div>
+
+        <ul class="space-y-2 text-neutral-700 overflow-y-auto max-h-96 px-2 dark:text-neutral-400">
+          {{if not .ProductCategories}}
+          <li>
+            <div class="px-4 py-4 w-full">
+              <span class="bg-red-100 flex items-center justify-between gap-5 px-4 py-2 rounded">
+                <p class="text-red-500 font-medium">Nenhuma categoria foi registrada.</p>
+                <img src="/static/icons/danger-red-outline.svg" alt="Erro" class="w-4" draggable="false" />
+              </span>
+            </div>
+          </li>
+          {{end}}
+          {{range .ProductCategories}}
+          <li
+            class="grid grid-cols-7 items-center bg-neutral-100 border border-neutral-200 py-2 px-1 rounded dark:bg-neutral-915 dark:border-neutral-800">
+            {{if .Image}}
+            <span class="px-5 min-w-max">
+              <button class="text-blue-500 text-sm hover:underline" onclick="openImageModal(`{{.Image}}`)">
+                Ver imagem
+              </button>
+            </span>
+            {{else}}
+            <span class="px-5 text-neutral-400 text-sm min-w-max dark:text-neutral-500">
+              Sem imagem
+            </span>
+            {{end}}
+            <span class="px-5 col-span-2 w-80 overflow-hidden text-ellipsis whitespace-nowrap" title="{{.Name}}">
+              {{.Name}}
+            </span>
+            <span class="px-5 col-span-2 w-72 overflow-hidden text-ellipsis whitespace-nowrap" title={{.Description}}>
+              {{.Description}}
+            </span>
+            <span class="px-5 text-center w-40 overflow-hidden text-ellipsis whitespace-nowrap">
+              {{if .ParentCategory}} {{.ParentCategory.Name}} {{else}}N/A{{end}}
+            </span>
+            <form action="/produtos/categorias/deletar/{{.ID}}/{{or .Image "null"}}" method="post"
+              class="px-5 text-end"
+              onsubmit="return confirm('Tem certeza que deseja EXCLUIR PERMANENTEMENTE esta categoria?'+ (`{{.Name}}`))">
+              <input type="text" name="csrf_token" value="{{$.CSRFToken}}" hidden>
+              <button class="text-red-500 text-sm hover:underline">
+                Excluir
+              </button>
+            </form>
+          </li>
+          {{end}}
+        </ul>
+      </div>
+    </section>
+  </section>
+</div>
+<script src="/static/js/script-admin.js"></script>
+{{end}}

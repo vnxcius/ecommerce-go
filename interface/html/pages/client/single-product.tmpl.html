@@ -1,0 +1,191 @@
+{{define "title"}}{{.ProductView.Name}}{{end}}
+{{define "main"}}
+{{template "header" .}}
+<section class="max-w-7xl mx-auto my-16">
+  <div class="flex items-start gap-5 justify-between">
+    <div class="flex items-start gap-2">
+      <div class="flex flex-col gap-2 overflow-y-scroll w-44 h-[690px]">
+        <img src="/static/img/product-placeholder.webp" alt="" class="w-44 h-36 object-cover">
+        <img src="/static/img/product-placeholder.webp" alt="" class="w-44 h-36 object-cover">
+        <img src="/static/img/product-placeholder.webp" alt="" class="w-44 h-36 object-cover">
+        {{range .ProductImages}}
+        <!-- <img src="https://res.cloudinary.com/loremcommerce/image/upload/{{.Image}}" alt="{{$.ProductView.Name}}"
+          class="w-44 h-36 object-cover"> -->
+        {{end}}
+      </div>
+      {{with index .ProductImages 0}}
+      <!--<img src="https://res.cloudinary.com/loremcommerce/image/upload/{{.Image}}" alt="{{$.ProductView.Name}}"
+        class="w-[690px] h-[690px] object-cover"> -->
+      {{end}}
+      <img src="/static/img/product-placeholder.webp" alt="" class="w-[690px] h-[690px] object-cover">
+    </div>
+    <div class="flex flex-col flex-1">
+      <h1 class="font-hubba text-5xl">{{.ProductView.Name}}</h1>
+      <div class="flex items-center my-2">
+        <img src="/static/icons/star-yellow.svg" alt="" class="w-4">
+        <img src="/static/icons/star-yellow.svg" alt="" class="w-4">
+        <img src="/static/icons/star-yellow.svg" alt="" class="w-4">
+        <img src="/static/icons/star-yellow.svg" alt="" class="w-4">
+        <img src="/static/icons/star.svg" alt="" class="w-4">
+
+        <a href="#" class="text-sm underline underline-offset-2 mx-2">
+          Avaliações
+        </a>
+      </div>
+      <span class="text-sm">Em estoque: {{.ProductView.InStock}}</span>
+      <div class="flex flex-col my-4">
+        {{if .ProductView.Discount}}
+        <span class="text-neutral-400 text-2xl line-through">R$ {{convertPrice .ProductView.Price}}</span>
+        <div class="flex items-end gap-2">
+          <span class="text-3xl">R$ {{calculateDiscount .ProductView.Price .ProductView.Discount}}</span>
+          <span class="text-green-500">{{.ProductView.Discount}}% off</span>
+        </div>
+        {{else}}
+        <span class="text-3xl">R$ {{convertPrice .ProductView.Price}}</span>
+        <span>10x de R$ {{convertPrice .ProductView.Price}} sem juros</span>
+        {{end}}
+      </div>
+
+      <hr class="w-full">
+
+      <div class="space-y-7 my-4">
+        <div class="space-y-2">
+          <h1 class="text-xl">Tamanhos</h1>
+          <div class="flex gap-2">
+            {{range .ProductSizes}}
+            <button class="w-10 h-8 flex items-center justify-center rounded-md text-sm bg-neutral-200">
+              {{.Name}}
+            </button>
+            {{end}}
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <h1 class="text-xl">Cor</h1>
+          <div class="flex max-w-xs gap-3 my-2">
+            <div class="space-y-2">
+              {{range .ProductColors}}
+              <!-- O VSCode pode apontar um erro de sintaxe, mas este style funciona -->
+              <button title="{{.Name}}"
+                class="size-7 rounded-full border {{if eq .ID $.ProductView.ColorID}} outline outline-neutral-400 {{end}}"
+                style="background-color: {{.Hex}}"></button>
+              {{end}}
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-5">
+          <form class="max-w-xs mx-auto">
+            <div class="relative flex items-center">
+              <button type="button" id="decrement-button"
+                class="bg-gray-100 hover:bg-gray-200 border border-gray-300 px-2 rounded-s-lg h-9 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                <img src="/static/icons/add.svg" alt="" class="size-4">
+              </button>
+              <input type="tel" id="quantity-input" oninput="limitQuantity()" max="{{.ProductView.InStock}}"
+                class="bg-gray-50 border-x-0 border-y border-gray-300 block w-12 py-2.5 px-4 h-9 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 z-10"
+                placeholder="99" value="1" />
+              <button type="button" id="increment-button"
+                class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg px-2 h-9 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                <img src="/static/icons/add.svg" alt="" class="size-4">
+              </button>
+            </div>
+          </form>
+
+          <button
+            class="px-8 py-2.5 w-max bg-neutral-800 text-neutral-50 text-sm font-medium rounded-full hover:bg-neutral-900">
+            Adicionar ao carrinho
+          </button>
+
+          <button>
+            <img src="/static/icons/heart.svg" alt="" class="size-7">
+          </button>
+        </div>
+
+        <div class="space-y-1">
+          <h1 class="text-lg font-semibold">
+            Calcular Frete
+          </h1>
+
+          <form method="post">
+            <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+            <input type="tel" name="cep" id="cep" placeholder="Insira o CEP" autocomplete="off" value="{{.Form.CEP}}"
+              oninput="formatCep()" maxlength="9"
+              class="w-32 px-4 text-center py-1 rounded-md bg-neutral-100 border border-neutral-300">
+            <button
+              class="px-4 py-2.5 mx-1 bg-transparent text-sm font-medium rounded-md hover:bg-neutral-200/90 duration-150">
+              Calcular
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="w-full my-16 border-neutral-300">
+
+  <div class="space-y-16">
+    <div class="">
+      <h1 class="text-2xl font-bold">
+        Devoluções e trocas <span class="mx-1">></span>
+      </h1>
+
+      <div>
+        <p>
+          Passo a passo para devolução:
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <h1 class="font-hubba text-4xl">
+        Descrição
+      </h1>
+      <hr class="w-full mb-4 border-neutral-300">
+
+      <span class="description">
+        {{.ProductView.Description}}
+      </span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const decrementButton = document.getElementById('decrement-button');
+  const incrementButton = document.getElementById('increment-button');
+
+  decrementButton.addEventListener('click', () => {
+    const quantityInput = document.getElementById('quantity-input');
+    if (quantityInput.value > 1) {
+      quantityInput.value = parseInt(quantityInput.value) - 1;
+    }
+  });
+
+  incrementButton.addEventListener('click', () => {
+    const quantityInput = document.getElementById('quantity-input');
+    const maxValue = quantityInput.getAttribute('max');
+    if (quantityInput.value < maxValue) {
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+    }
+  });
+
+  function limitQuantity() {
+    const quantityInput = document.getElementById('quantity-input');
+    const maxValue = quantityInput.getAttribute('max');
+
+    if (quantityInput.value < 0) {
+      quantityInput.value = 0;
+    }
+
+    if (quantityInput.value > 99) {
+      quantityInput.value = 99;
+    }
+
+    if (quantityInput.value > maxValue) {
+      quantityInput.value = maxValue;
+    }
+  }
+</script>
+
+<script src="/static/js/form-formatter.js"></script>
+{{template "footer" .}}
+{{end}}

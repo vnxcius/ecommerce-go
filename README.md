@@ -11,6 +11,12 @@ If empty, default value is :80.
 -port=4000
 ```
 
+<!-- Tailwind cli -->
+#### TailwindCSS watch command for CSS changes
+```bash
+npx tailwindcss -i ./interface/static/css/input.css -o ./interface/static/css/output.css --watch
+```
+
 <!-- Cloudinary connection string -->
 #### Cloudinary connection string
 Used for communicating with Cloudinary API, **cannot be empty, can be invalid keys**.

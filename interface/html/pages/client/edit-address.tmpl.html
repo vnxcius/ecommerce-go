@@ -1,0 +1,22 @@
+{{define "title"}}Editar endereço{{end}}
+{{define "main"}}
+{{template "header" .}}
+
+<section class="max-w-6xl my-16 mx-auto">
+  <div class="flex divide-x">
+    <div class="w-2/3 pr-20">
+      <h1 class="text-3xl font-light">
+        Editar endereço
+      </h1>
+
+      {{template "address-form" .}}
+    </div>
+    <div class="w-1/3">
+      {{template "profile-sidebar" .}}
+    </div>
+  </div>
+</section>
+{{template "footer" .}}
+<script src="/static/js/form-formatter.js"></script>
+<script>formatCep();</script>
+{{end}}

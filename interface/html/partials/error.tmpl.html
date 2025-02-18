@@ -1,0 +1,9 @@
+{{define "error"}}
+{{range .Form.NonFieldErrors}}
+<div title="{{.}}"
+  class="bg-red-100 flex items-center justify-between gap-5 px-4 py-2 rounded max-w-96 overflow-hidden">
+  <span class="text-red-500 font-medium first-letter:capitalize">{{.}}</span>
+  <img src="/static/icons/danger-red-outline.svg" alt="Erro" class="w-4" draggable="false" />
+</div>
+{{end}}
+{{end}}

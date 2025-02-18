@@ -1,0 +1,71 @@
+{{define "title"}}Login{{end}}
+
+{{define "main"}}
+<div
+  class='fixed top-0 left-0 w-full h-screen flex items-center justify-center md:h-screen lg:py-0 dark:bg-neutral-950'>
+  <div
+    class='w-full border border-neutral-300 rounded-md shadow-sm md:mt-0 sm:max-w-md xl:p-0 dark:bg-neutral-925 dark:border-neutral-800'>
+    <div class='px-8 py-10 space-y-8'>
+      <div class='flex items-center space-x-4'>
+        <a href="http://localhost:4000" class='border-r border-neutral-300 h-fit pr-5 dark:border-neutral-800'>
+          <img class='w-16 py-3' src="/static/img/logoipsum-359.svg" alt='logo' draggable='false' />
+        </a>
+
+        <div>
+          <h2 class='flex flex-col'>
+            <span class='text-2xl font-semibold text-neutral-800 dark:text-neutral-400'>
+              Bem vindo!
+            </span>
+            <span class='text-sm font-semibold text-neutral-600 dark:text-neutral-600'>
+              Faça login para continuar
+            </span>
+          </h2>
+        </div>
+      </div>
+
+      <form class='space-y-3' method="post" novalidate>
+        <!-- Incluir CSRF Token -->
+        <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+        <div class='space-y-4'>
+          <div class="flex relative flex-col group">
+            <label for="email" class='text-sm font-medium mb-1 dark:text-neutral-500'>
+              E-mail
+            </label>
+            {{with .Form.FieldErrors.email}}
+            <label for="email" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+            <input
+              class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none block w-full p-2.5
+                dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700"
+              type="email" id="email" name="email" maxlength="100" placeholder="john.doe@loremcommerce.com.br"
+              required autocomplete autofocus />
+          </div>
+          <div class="flex relative flex-col group">
+            <label for="password" class='text-sm font-medium mb-1 dark:text-neutral-500'>
+              Senha
+            </label>
+            {{with .Form.FieldErrors.password}}
+            <label for="password" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+            <input
+              class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none block w-full p-2.5
+                dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700"
+              type="password" id="password" name="password" maxlength="50" placeholder="•••••••••••••••" required
+              autocomplete />
+          </div>
+        </div>
+
+        {{template "error" .}}
+
+        <button type='submit' class='w-full text-white bg-accent font-medium rounded-lg text-sm px-5 py-2.5 text-center border !mt-16
+            hover:bg-neutral-700 focus:ring-2 focus:outline-none focus:ring-blue-400 disabled:bg-neutral-100 disabled:text-neutral-800 disabled:border-neutral-300 disabled:cursor-not-allowed
+            dark:bg-accent-dark dark:text-neutral-800 dark:hover:bg-neutral-200'>
+          Entrar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/script-admin.js"></script>
+{{end}}

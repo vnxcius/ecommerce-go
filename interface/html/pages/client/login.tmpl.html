@@ -1,0 +1,61 @@
+{{define "title"}}Entrar{{end}}
+{{define "main"}}
+<section class="h-screen flex flex-col justify-center lg:max-w-5xl mx-auto overflow-hidden">
+  <form method="post" class="flex justify-between w-full" novalidate>
+    <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+    <section class="space-y-10">
+      <a href="/" class="block w-fit">
+        <img src="/static/img/logoipsum-359.svg" alt="" class="w-32">
+      </a>
+      <h2 class="font-extrabold text-3xl">
+        Olá, seja bem-vindo(a)!
+      </h2>
+      <div class="space-y-5 w-96">
+        <div class='flex flex-col'>
+          <label for="email" class="text-sm font-medium">
+            Email
+          </label>
+          {{with .Form.FieldErrors.email}}
+          <label for="email" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="email" name="email" maxlength="50" type="email" placeholder="meuemail@loremcommerce.com.br"
+            value="{{.Form.Email}}" class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none"
+            required autofocus>
+        </div>
+        <div class='flex flex-col'>
+          <label for="password" class="text-sm font-medium">
+            Senha
+          </label>
+          {{with .Form.FieldErrors.password}}
+          <label for="password" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="password" name="password" maxlength="50" type="password" placeholder="•••••••••••" required
+            class="bg-transparent border-b border-neutral-400 focus:outline-none">
+        </div>
+        <div class="flex flex-col items-end">
+          <a href="#" class="w-fit font-semibold">
+            Esqueci minha senha
+          </a>
+        </div>
+      </div>
+
+      {{template "success" .}}
+      {{template "error" .}}
+
+      <div class="flex flex-col items-center w-fit mx-auto py-10 space-y-2">
+        <button type="submit" class="bg-neutral-800 rounded-full text-neutral-100 font-bold px-16 py-2">
+          Entrar
+        </button>
+
+        <a href="/registrar" class="w-fit block">
+          Cadastre-se
+        </a>
+      </div>
+    </section>
+
+    <div class="login-img scale-[2]">
+      <img src="/static/img/login_bg.webp" alt="" class="-translate-y-9 w-1/2" draggable="false">
+    </div>
+  </form>
+</section>
+{{end}}

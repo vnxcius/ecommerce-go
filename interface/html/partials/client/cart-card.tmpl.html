@@ -1,0 +1,79 @@
+{{define "cart-card"}}
+
+<div class="flex items-start gap-10 py-5">
+  <a href="#">
+    <img src="/static/img/product-placeholder.webp" alt="" class="size-24 object-cover rounded">
+  </a>
+
+  <form>
+    <a href="#" class="w-fit block text-xl font-medium">
+      Produto A
+    </a>
+
+    <div class="flex gap-3">
+      <label for="color">Cor:</label>
+      <select name="color" id="color" class="bg-transparent">
+        {{range .ProductColors}}
+        <option value="{{.ID}}">{{.Name}}</option>
+        {{end}}
+      </select>
+
+      <label for="size">Tamanho:</label>
+      <select name="size" id="size" class="bg-transparent">
+        {{range .ProductSizes}}
+        <option value="{{.ID}}">{{.Name}}</option>
+        {{end}}
+      </select>
+    </div>
+    
+    <p class="text-xl my-2">R$ 59</p>
+
+    <div class="flex gap-4 items-center">
+      <div class="relative flex items-center">
+        <button type="button" id="decrement-button"
+          class="bg-gray-100 hover:bg-gray-200 border border-gray-300 px-2 rounded-s h-7 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+          <img src="/static/icons/add.svg" alt="" class="size-4">
+        </button>
+        <input type="tel" id="quantity-input" oninput="limitQuantity()"
+          class="bg-gray-50 border-x-0 border-y border-gray-300 block w-10 py-2.5 px-2 h-7 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 z-10"
+          placeholder="99" value="1" />
+        <button type="button" id="increment-button"
+          class="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e px-2 h-7 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+          <img src="/static/icons/add.svg" alt="" class="size-4">
+        </button>
+      </div>
+      <button type="button" class="text-red-500 text-sm hover:underline">Remover</button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  const decrementButton = document.getElementById('decrement-button');
+  const incrementButton = document.getElementById('increment-button');
+
+  decrementButton.addEventListener('click', () => {
+    const quantityInput = document.getElementById('quantity-input');
+    if (quantityInput.value > 1) {
+      quantityInput.value = parseInt(quantityInput.value) - 1;
+    }
+  });
+
+  incrementButton.addEventListener('click', () => {
+    const quantityInput = document.getElementById('quantity-input');
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+  });
+
+  function limitQuantity() {
+    const quantityInput = document.getElementById('quantity-input');
+    if (quantityInput.value < 0) {
+      quantityInput.value = 0;
+    }
+
+    if (quantityInput.value > 99) {
+      quantityInput.value = 99;
+    }
+  }
+</script>
+
+{{end}}

@@ -1,0 +1,14 @@
+{{define "title"}}Detalhes do Produto{{end}}
+
+{{define "main"}}
+<div class="flex">
+  {{template "sidebar" .}}
+  <h1>
+    <a href="/">Product view</a>
+  </h1>
+  <p>Produto: {{.ProductView.Name}}</p>
+  <p>Descricão: {{.Product.Description}}</p>
+  <p>Criado em: <time>{{humanDate .ProductView.CreatedAt}}</time> </p>
+</div>
+<script src="/static/js/script-admin.js"></script>
+{{end}}

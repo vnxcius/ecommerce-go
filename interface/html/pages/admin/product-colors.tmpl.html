@@ -1,0 +1,105 @@
+{{define "title"}}Cores{{end}}
+{{define "main"}}
+<div class="flex">
+  {{template "sidebar" .}}
+  <div id="modal-container"></div>
+  <section class="my-16 w-full mx-28 flex gap-10 divide-x dark:divide-neutral-900">
+    <div class="w-1/2">
+      <div class="flex items-center gap-2 my-4">
+        <h2 class="min-w-max text-xl font-semibold text-neutral-600 dark:text-neutral-500">
+          Cores disponíveis
+        </h2>
+        <hr class="w-full dark:border-t-neutral-900">
+        <span class="text-sm min-w-max text-neutral-500 dark:text-neutral-600">
+          {{len .ProductColors}} cores encontradas
+        </span>
+      </div>
+      <div
+        class="bg-accent text-sm text-white font-medium rounded-lg py-3 mb-3 sticky top-3 z-40 shadow dark:bg-neutral-900 dark:text-neutral-500">
+        <h3 class="px-7 w-80">
+          Nome
+        </h3>
+      </div>
+
+      <ul class="space-y-2 text-neutral-700 overflow-y-auto max-h-[500px] px-2 dark:text-neutral-400">
+        {{if not .ProductColors}}
+        <li>
+          <div class="px-4 py-4 w-full">
+            <span class="bg-red-100 flex items-center justify-between gap-5 px-4 py-2 rounded">
+              <p class="text-red-500 font-medium">Nenhuma cor foi registrada.</p>
+              <img src="/static/icons/danger-red-outline.svg" alt="Erro" class="w-4" draggable="false" />
+            </span>
+          </div>
+        </li>
+        {{end}}
+        {{range .ProductColors}}
+        <li
+          class="flex justify-between items-center bg-neutral-100 border border-neutral-200 py-2 px-1 rounded dark:bg-neutral-915 dark:border-neutral-800">
+          <span class="px-5 w-80 overflow-hidden text-ellipsis whitespace-nowrap" title="{{.Name}}">
+            {{.Name}}
+          </span>
+          <span class="px-5 flex gap-4 items-center">
+            <div>
+              <button onclick="openEditColorModal(`{{.ID}}`, `{{.Name}}`, `{{$.CSRFToken}}`)"
+                class="text-blue-500 text-sm hover:underline">
+                Editar
+              </button>
+            </div>
+            <form action="/produtos/cores/deletar/{{.ID}}" method="post"
+              onsubmit="return confirm('Tem certeza que deseja EXCLUIR PERMANENTEMENTE esta cor?'+ (`{{.Name}}`))">
+              <input type="text" name="csrf_token" value="{{$.CSRFToken}}" hidden>
+              <button class="text-red-500 text-sm hover:underline">
+                Excluir
+              </button>
+            </form>
+          </span>
+        </li>
+        {{end}}
+      </ul>
+    </div>
+    <div class="w-1/2 px-10">
+      <div class="flex items-center gap-2 my-4">
+        <h2 class="min-w-max text-xl font-semibold text-neutral-600 dark:text-neutral-500">
+          Cadastrar nova cor
+        </h2>
+        <hr class="w-full dark:border-t-neutral-900">
+      </div>
+      <form method="post" class="space-y-2">
+        <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+
+        <div class="flex flex-col">
+          <label for="name" class='text-sm font-medium dark:text-neutral-500'>
+            Nome
+          </label>
+          {{with .Form.FieldErrors.name}}
+          <label for="name" class='text-red-500'>{{.}}</label>
+          {{end}}
+          <input type="text" name="name" id="name" placeholder="e.g. Preto" autocomplete="off" autofocus
+            value="{{.Form.Name}}"
+            class="w-full p-2 bg-white border border-neutral-300 rounded font-normal focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700" />
+        </div>
+
+        <div class="flex flex-col">
+          <label for="name" class='text-sm font-medium dark:text-neutral-500'>
+            Selecione o tom da cor
+          </label>
+          {{with .Form.FieldErrors.hex}}
+          <label for="name" class='text-red-500'>{{.}}</label>
+          {{end}}
+          <input type="color" name="hex" id="hex" value="{{.Form.Hex}}"
+            class="w-full p-2 bg-white border border-neutral-300 rounded font-normal focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700" />
+        </div>
+       
+        {{template "success" .}}
+        {{template "error" .}}
+        
+        <button type="submit"
+          class="bg-accent text-neutral-50 text-center rounded-md px-8 py-2 font-semibold dark:bg-accent-dark dark:text-neutral-800">
+          Cadastrar cor
+        </button>
+      </form>
+    </div>
+  </section>
+</div>
+<script src="/static/js/script-admin.js"></script>
+{{end}}

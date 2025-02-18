@@ -1,0 +1,10 @@
+node_modules/
+.vscode/
+*.log
+.env
+flags.md
+.air.toml
+tmp/
+main
+input.css
+*.exe

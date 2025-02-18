@@ -1,0 +1,2993 @@
+/*
+! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-feature-settings: normal;
+  /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.-right-3\/4 {
+  right: -75%;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.bottom-10 {
+  bottom: 2.5rem;
+}
+
+.bottom-8 {
+  bottom: 2rem;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.left-20 {
+  left: 5rem;
+}
+
+.left-24 {
+  left: 6rem;
+}
+
+.left-7 {
+  left: 1.75rem;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.right-5 {
+  right: 1.25rem;
+}
+
+.right-7 {
+  right: 1.75rem;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.top-1\/3 {
+  top: 33.333333%;
+}
+
+.top-1\/4 {
+  top: 25%;
+}
+
+.top-10 {
+  top: 2.5rem;
+}
+
+.top-16 {
+  top: 4rem;
+}
+
+.top-3 {
+  top: 0.75rem;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-40 {
+  z-index: 40;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.-m-1 {
+  margin: -0.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.mx-14 {
+  margin-left: 3.5rem;
+  margin-right: 3.5rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mx-28 {
+  margin-left: 7rem;
+  margin-right: 7rem;
+}
+
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.mx-9 {
+  margin-left: 2.25rem;
+  margin-right: 2.25rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.my-16 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.my-7 {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.\!mt-16 {
+  margin-top: 4rem !important;
+}
+
+.-ml-5 {
+  margin-left: -1.25rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-44 {
+  margin-bottom: 11rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.ml-12 {
+  margin-left: 3rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mr-20 {
+  margin-right: 5rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mt-24 {
+  margin-top: 6rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-7 {
+  margin-top: 1.75rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
+.size-24 {
+  width: 6rem;
+  height: 6rem;
+}
+
+.size-4 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.size-7 {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.h-14 {
+  height: 3.5rem;
+}
+
+.h-2\/3 {
+  height: 66.666667%;
+}
+
+.h-20 {
+  height: 5rem;
+}
+
+.h-36 {
+  height: 9rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-64 {
+  height: 16rem;
+}
+
+.h-7 {
+  height: 1.75rem;
+}
+
+.h-72 {
+  height: 18rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.h-9 {
+  height: 2.25rem;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
+.h-\[500px\] {
+  height: 500px;
+}
+
+.h-\[550px\] {
+  height: 550px;
+}
+
+.h-\[60vh\] {
+  height: 60vh;
+}
+
+.h-\[690px\] {
+  height: 690px;
+}
+
+.h-\[calc\(100vh-110px\)\] {
+  height: calc(100vh - 110px);
+}
+
+.h-\[calc\(100vh-200px\)\] {
+  height: calc(100vh - 200px);
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.max-h-96 {
+  max-height: 24rem;
+}
+
+.max-h-\[500px\] {
+  max-height: 500px;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-1\/3 {
+  width: 33.333333%;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.w-14 {
+  width: 3.5rem;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-20 {
+  width: 5rem;
+}
+
+.w-24 {
+  width: 6rem;
+}
+
+.w-28 {
+  width: 7rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.w-36 {
+  width: 9rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
+.w-44 {
+  width: 11rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.w-52 {
+  width: 13rem;
+}
+
+.w-56 {
+  width: 14rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.w-64 {
+  width: 16rem;
+}
+
+.w-7 {
+  width: 1.75rem;
+}
+
+.w-72 {
+  width: 18rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-80 {
+  width: 20rem;
+}
+
+.w-96 {
+  width: 24rem;
+}
+
+.w-\[500px\] {
+  width: 500px;
+}
+
+.w-\[690px\] {
+  width: 690px;
+}
+
+.w-\[800px\] {
+  width: 800px;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
+.min-w-\[16px\] {
+  min-width: 16px;
+}
+
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
+}
+
+.max-w-7xl {
+  max-width: 80rem;
+}
+
+.max-w-96 {
+  max-width: 24rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-xs {
+  max-width: 20rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.-translate-x-2 {
+  --tw-translate-x: -0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-y-5 {
+  --tw-translate-y: -1.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-y-9 {
+  --tw-translate-y: -2.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-y-3 {
+  --tw-translate-y: 0.75rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.rotate-180 {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.rotate-45 {
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-\[2\] {
+  --tw-scale-x: 2;
+  --tw-scale-y: 2;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-scale-x-100 {
+  --tw-scale-x: -1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-cols-7 {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.place-items-start {
+  place-items: start;
+}
+
+.place-items-center {
+  place-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.gap-16 {
+  gap: 4rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-20 {
+  gap: 5rem;
+}
+
+.gap-28 {
+  gap: 7rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.gap-7 {
+  gap: 1.75rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-16 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(4rem * var(--tw-space-y-reverse));
+}
+
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-7 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
+}
+
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.divide-x > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-x-reverse: 0;
+  border-right-width: calc(1px * var(--tw-divide-x-reverse));
+  border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
+}
+
+.divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+
+.place-self-end {
+  place-self: end;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.text-wrap {
+  text-wrap: wrap;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.rounded-e {
+  border-start-end-radius: 0.25rem;
+  border-end-end-radius: 0.25rem;
+}
+
+.rounded-e-lg {
+  border-start-end-radius: 0.5rem;
+  border-end-end-radius: 0.5rem;
+}
+
+.rounded-l-md {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.rounded-r {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.rounded-s {
+  border-start-start-radius: 0.25rem;
+  border-end-start-radius: 0.25rem;
+}
+
+.rounded-s-lg {
+  border-start-start-radius: 0.5rem;
+  border-end-start-radius: 0.5rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-x-0 {
+  border-left-width: 0px;
+  border-right-width: 0px;
+}
+
+.border-y {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-l {
+  border-left-width: 1px;
+}
+
+.border-r {
+  border-right-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
+.border-blue-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(219 234 254 / var(--tw-border-opacity));
+}
+
+.border-blue-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
+}
+
+.border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.border-neutral-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(245 245 245 / var(--tw-border-opacity));
+}
+
+.border-neutral-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 229 229 / var(--tw-border-opacity));
+}
+
+.border-neutral-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity));
+}
+
+.border-neutral-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(163 163 163 / var(--tw-border-opacity));
+}
+
+.border-red-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 226 226 / var(--tw-border-opacity));
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+.border-t-transparent {
+  border-top-color: transparent;
+}
+
+.bg-accent {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 32 30 / var(--tw-bg-opacity));
+}
+
+.bg-blue-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 246 255 / var(--tw-bg-opacity));
+}
+
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-green-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(115 115 115 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-800\/20 {
+  background-color: rgb(38 38 38 / 0.2);
+}
+
+.bg-neutral-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-925 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(16 16 16 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-950 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 10 10 / var(--tw-bg-opacity));
+}
+
+.bg-red-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+
+.bg-red-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
+}
+
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.bg-sky-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 242 254 / var(--tw-bg-opacity));
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
+}
+
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.from-neutral-950 {
+  --tw-gradient-from: #0a0a0a var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(10 10 10 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-neutral-800\/5 {
+  --tw-gradient-to: rgb(38 38 38 / 0.05) var(--tw-gradient-to-position);
+}
+
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-2\.5 {
+  padding: 0.625rem;
+}
+
+.p-20 {
+  padding: 5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.px-14 {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-28 {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.px-9 {
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
+}
+
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.py-28 {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-9 {
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pl-10 {
+  padding-left: 2.5rem;
+}
+
+.pl-14 {
+  padding-left: 3.5rem;
+}
+
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
+.pr-20 {
+  padding-right: 5rem;
+}
+
+.pr-5 {
+  padding-right: 1.25rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.font-hubba {
+  font-family: 'Hubba', sans-serif;
+}
+
+.font-source-sans {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.font-zing {
+  font-family: 'Zing Rust Demo', sans-serif;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-\[10px\] {
+  font-size: 10px;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
+}
+
+.text-neutral-100 {
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity));
+}
+
+.text-neutral-400 {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity));
+}
+
+.text-neutral-50 {
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity));
+}
+
+.text-neutral-500 {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity));
+}
+
+.text-neutral-600 {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-text-opacity));
+}
+
+.text-neutral-700 {
+  --tw-text-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-text-opacity));
+}
+
+.text-neutral-800 {
+  --tw-text-opacity: 1;
+  color: rgb(38 38 38 / var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
+.line-through {
+  text-decoration-line: line-through;
+}
+
+.underline-offset-2 {
+  text-underline-offset: 2px;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-65 {
+  opacity: 0.65;
+}
+
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.outline {
+  outline-style: solid;
+}
+
+.outline-neutral-400 {
+  outline-color: #a3a3a3;
+}
+
+.brightness-0 {
+  --tw-brightness: brightness(0);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.brightness-75 {
+  --tw-brightness: brightness(.75);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.brightness-\[3\] {
+  --tw-brightness: brightness(3);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.brightness-\[6\] {
+  --tw-brightness: brightness(6);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.grayscale {
+  --tw-grayscale: grayscale(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-150 {
+  transition-duration: 150ms;
+}
+
+.duration-75 {
+  transition-duration: 75ms;
+}
+
+@font-face {
+  font-family: 'Hubba';
+
+  src: url(../fonts/Hubba-Oblique.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Zing Rust Demo';
+
+  src: url(../fonts/zing-rust-demo-base.woff) format('woff');
+}
+
+:root {
+  /* Tailwind CSS Variables */
+  --rounded: 0.25rem;
+  /* 4px */
+  --rounded-xl: 0.75rem;
+  /* 12px */
+  --rounded-full: 9999px;
+  --blue-500: #06c;
+  --neutral-950: #0a0a0a;
+  --neutral-915: #151515;
+  --neutral-900: #171717;
+  --neutral-800: #262626;
+  --neutral-600: #525252;
+  --neutral-500: #737373;
+  --neutral-300: #d4d4d4;
+  --neutral-200: #e5e5e5;
+  --neutral-050: #fafafa;
+}
+
+.login-img {
+  -webkit-clip-path: path("M 235.351 50.1622 C 234.689 50.0386 234.159 49.9151 233.497 49.668 C 234.292 49.9151 234.953 50.0386 235.351 50.1622 M 19.9876 76.2317 C 22.8997 77.8378 26.0765 79.444 28.9886 80.6795 C 31.9007 81.9151 34.6805 82.7799 36.5336 83.027 C 40.5047 84.139 38.122 88.0927 39.0486 91.1815 C 42.0931 89.3282 44.6081 91.9228 47.6525 90.0695 C 47.7849 90.5637 50.4323 90.3166 53.6091 90.0695 C 56.7859 89.8224 60.6246 89.2046 63.1396 88.7104 C 63.1396 88.7104 63.5367 88.3398 64.4633 87.8456 C 65.3899 87.3513 67.1106 86.7336 69.6256 86.3629 C 71.3464 86.1158 71.0817 85.0039 70.817 84.0154 C 71.0817 85.0039 71.0817 85.0039 71.2141 86.1158 C 72.4054 83.7683 76.2441 85.251 77.7001 83.8919 C 77.9648 84.8803 77.9648 84.8803 78.0972 85.9923 C 78.8914 85.3745 79.6856 84.8803 80.4798 84.6332 C 81.274 84.3861 82.2006 84.2626 82.9948 84.2626 C 84.7156 84.139 86.4364 84.139 88.0248 83.3977 C 88.1572 84.3861 88.1572 84.3861 88.4219 85.4981 C 90.1427 85.251 91.7311 85.0039 91.8635 86.1158 C 91.9959 87.1042 91.9959 87.1042 92.1282 88.2162 C 93.0548 88.5869 94.2461 88.2162 95.3051 87.8456 C 96.364 87.5985 97.1582 87.4749 97.2906 88.5869 C 97.1582 87.5985 97.1582 87.5985 97.0259 86.4865 C 103.777 85.8687 108.807 86.2394 113.969 86.9807 C 117.411 87.8456 120.984 88.2162 124.558 88.4633 C 128.265 88.7104 131.971 88.7104 135.81 88.4633 C 143.487 88.2162 151.297 87.1042 158.974 86.61 C 160.695 86.7336 162.416 84.6332 160.96 82.5328 C 162.68 82.6564 164.401 82.6564 165.99 82.7799 C 169.299 83.027 167.975 79.8147 171.284 80.0618 C 185.183 78.4556 198.949 80.556 212.451 83.2741 L 222.511 85.4981 C 225.82 86.2394 229.129 87.2278 232.571 87.9691 C 234.292 88.3398 235.88 88.7104 237.601 89.0811 L 242.631 90.3166 C 245.94 91.0579 249.382 91.7992 252.823 92.2934 C 249.646 90.8108 246.999 89.3282 244.219 87.9691 C 242.896 87.3513 241.439 86.7336 239.983 86.2394 C 238.527 85.7452 236.807 85.4981 235.086 85.251 C 235.351 84.2626 236.012 82.1622 234.292 81.7915 C 231.777 80.9266 229.129 80.1853 226.482 79.5676 C 223.835 78.9498 221.187 78.4556 218.672 77.9614 C 216.157 77.3436 213.907 76.7259 212.054 75.9846 C 210.068 75.1197 208.48 74.2548 207.421 73.0193 C 205.832 71.6602 204.774 68.3243 199.479 67.4595 L 204.774 68.3243 C 204.906 67.3359 205.303 65.2355 205.303 65.2355 C 198.42 62.888 189.551 60.7876 182.403 58.9344 C 182.403 58.9344 182.668 56.834 182.8 55.8456 L 179.094 55.4749 C 178.432 53.4981 179.094 52.2625 180.683 51.5212 C 181.477 51.1506 182.536 50.7799 183.727 50.6564 C 184.918 50.5328 186.374 50.4093 187.83 50.4093 C 190.743 50.4093 194.184 50.6564 197.361 50.7799 C 198.155 50.7799 198.949 50.9035 199.744 50.9035 C 200.538 51.027 201.2 51.027 201.994 51.1506 C 203.45 51.2741 204.774 51.3977 205.965 51.5212 C 206.097 50.5328 206.494 48.4324 206.759 47.3205 L 203.053 46.7027 L 203.45 44.6023 C 206.23 45.0965 209.009 45.4672 211.657 45.9614 C 214.304 46.4556 216.951 46.8263 219.466 47.3205 C 221.981 47.8147 224.629 48.3089 227.276 48.9266 C 228.335 49.1737 229.394 49.4208 230.585 49.5444 C 229.526 49.2973 228.6 49.1737 227.938 49.0502 C 228.203 48.0618 228.467 46.9498 226.614 46.5792 C 228.467 46.9498 230.453 47.444 232.571 47.9382 C 234.556 48.4324 236.674 49.0502 238.792 49.5444 C 243.028 50.5328 247.264 51.2741 251.235 51.2741 C 253.353 50.7799 252.558 47.0734 247.131 44.7259 C 244.352 43.9846 241.969 43.4903 239.586 42.8726 C 237.204 42.2548 234.821 41.7606 232.041 41.1429 L 232.571 39.0425 C 233.497 39.2896 234.556 39.5367 235.748 39.7838 C 236.807 40.1544 237.998 40.5251 239.189 40.8958 C 241.572 41.6371 243.954 42.1313 245.94 42.1313 C 248.19 41.5135 243.028 38.1776 245.146 37.5598 C 247.131 38.0541 248.984 38.5483 251.235 37.9305 C 248.323 37.1892 244.881 36.695 241.572 35.9537 C 239.851 35.583 238.13 35.2124 236.542 34.8417 C 234.953 34.471 233.365 33.9768 231.909 33.4826 C 230.188 32 228.467 30.6409 228.997 28.5405 C 226.482 28.2934 224.099 27.7992 221.981 27.1815 C 219.863 26.5637 217.746 25.8224 215.892 24.834 C 212.186 22.8571 209.009 20.2625 206.494 17.1737 C 205.303 15.444 199.082 14.8263 193.522 14.332 L 187.963 12.8494 C 185.845 12.3552 183.595 11.9846 181.477 11.4903 C 179.226 11.1197 177.109 10.6255 174.858 10.2548 C 173.799 10.0077 172.608 9.88417 171.549 9.63707 L 168.24 9.26641 C 163.739 8.7722 159.239 8.15444 154.871 7.78378 C 150.37 7.41313 145.87 7.16602 141.369 6.79537 C 136.869 6.42471 132.368 6.30116 127.868 6.17761 C 123.367 5.9305 118.999 5.6834 114.498 5.55985 C 109.866 4.94208 105.497 4.69498 101.129 4.32432 C 96.7611 4.07722 92.393 3.83012 88.1572 3.33591 C 87.0982 2.96525 85.3775 2.34749 83.6567 1.72973 C 81.9359 1.11197 80.2151 0.617761 79.1562 0.247104 C 61.6836 -0.864865 40.7694 4.44788 25.0176 10.5019 C 21.0465 12.1081 18.3992 16.0618 16.8108 19.6448 C 15.2223 23.2278 14.6929 26.4402 14.6929 26.4402 C 13.3692 29.0347 12.8397 33.6062 15.3547 35.0888 C 16.4137 35.0888 17.7373 34.8417 19.3258 34.5946 C 20.7818 34.471 22.5026 34.2239 24.091 34.2239 C 27.1355 34.1004 29.9152 34.471 30.4447 36.5714 C 30.7094 37.5598 28.8563 38.0541 26.8707 38.5483 C 28.062 42.6255 24.8852 52.139 23.1644 52.7568 C 22.635 53.9923 19.9876 56.9575 17.605 59.9228 C 15.09 62.888 12.7073 65.8533 12.1779 67.0888 C 9.92761 69.3127 14.2958 72.8958 19.9876 76.2317 M 230.585 49.1737 C 231.512 49.4208 232.571 49.5444 233.63 49.7915 C 232.571 49.5444 231.512 49.2973 230.585 49.1737 M 242.366 179.645 C 238.13 178.533 234.159 177.174 231.115 174.95 C 228.865 174.332 234.953 170.131 233.365 166.795 C 230.982 166.178 226.35 165.066 224.099 164.571 C 222.908 160 228.6 156.911 227.408 152.34 C 226.085 147.768 215.892 148.263 214.172 145.05 C 210.862 142.95 212.319 142.208 215.495 142.085 C 218.672 142.085 223.57 142.826 227.144 143.691 C 225.423 140.479 231.909 144.803 232.703 142.085 C 234.159 136.649 235.748 131.212 227.011 124.911 C 224.893 122.934 228.467 119.475 229.129 116.757 C 199.346 109.961 166.387 104.278 135.28 106.255 C 128.794 106.625 122.176 106.255 115.293 105.761 C 108.41 105.266 101.526 104.402 94.5109 103.66 C 91.0693 103.29 87.4953 102.919 84.0538 102.672 C 80.6122 102.425 77.1706 102.301 73.7291 102.178 C 66.8459 101.931 60.2275 102.301 53.8738 103.29 C 50.0352 103.784 45.0052 102.795 40.2399 102.425 C 35.4747 102.054 30.9741 102.301 28.4592 105.884 L 36.0041 105.884 C 32.1655 107.861 28.4592 107.985 24.6205 107.737 C 20.7818 107.49 17.0755 106.749 13.2368 107.49 C 13.3692 110.332 13.3692 111.691 10.8542 113.174 C 15.8842 112.927 23.2968 111.568 28.3268 112.927 L 28.3268 117.127 C 23.4292 118.61 15.8842 115.768 10.8542 117.375 C 10.8542 118.734 10.9866 121.575 10.9866 122.934 C 10.9866 124.293 8.60393 124.417 6.08893 124.541 C 8.60393 124.417 13.5016 124.293 15.8842 124.293 C 15.8842 125.653 16.0165 128.494 16.0165 129.853 C 16.0165 131.212 13.6339 131.336 11.1189 131.459 C 11.2513 134.301 8.86867 137.143 11.3837 138.502 C 13.7663 138.378 16.2813 138.378 18.6639 138.378 C 9.00103 139.985 4.50052 147.151 4.63288 151.351 C 7.01551 149.869 7.14788 154.07 9.39814 152.587 C 2.38263 157.035 -4.23578 162.842 5.16236 163.954 C 46.0641 164.571 87.2306 166.054 128.529 169.884 C 152.753 172.108 177.109 175.073 201.067 179.151 C 181.08 178.903 161.489 180.633 141.104 180.633 C 131.971 184.463 70.5522 186.07 54.8004 184.463 C 54.2709 184.463 53.8738 184.587 53.3444 184.587 C 44.7404 184.093 34.2834 184.71 27.0031 188.046 C 23.6939 190.023 20.2523 192.494 16.9431 194.842 C 18.5315 196.201 19.9876 197.683 21.1789 199.042 C 17.7373 198.919 14.2958 198.672 12.9721 200.278 C 5.69183 203.985 9.79524 208.185 12.575 213.992 C 14.5605 216.587 11.9131 220.417 15.09 223.012 C 12.8397 222.888 11.6484 222.888 9.39814 222.641 C 9.1334 225.112 16.4137 221.405 14.8252 225.359 C 12.575 224.371 10.1923 225.853 7.80972 225.73 C 8.60393 229.066 15.7518 226.965 15.3547 230.178 C 14.1634 230.919 8.86867 225.73 8.47156 229.807 C 8.33919 230.672 10.7218 230.795 11.7808 230.795 C 4.76525 232.031 0.794209 235.861 7.28025 240.309 C 5.02999 240.185 1.85315 238.456 -0.529473 239.073 L -0.529473 239.197 C 0.661841 239.32 2.64736 240.185 3.83868 240.185 C 2.51499 240.062 1.19131 240.062 -0.132368 239.938 C 0.132368 240.556 0.264736 241.05 0.529473 241.668 C 1.58842 242.162 2.51499 242.533 3.57394 242.656 C 2.64736 242.656 1.85315 242.533 0.926577 242.533 C 1.58842 243.892 2.38263 245.127 3.17684 246.363 C 6.35367 248.958 9.39814 252.788 11.1189 252.911 C 25.0176 254.764 38.9162 256.124 52.8149 256.494 C 52.8149 255.012 52.153 253.529 53.212 252.788 C 56.7859 251.429 59.698 256.371 63.4043 255.012 C 63.5367 254.147 63.5367 253.405 63.6691 252.541 C 66.4488 253.529 69.3609 254.888 72.4054 256 C 77.8325 255.629 83.3919 255.135 88.819 254.27 C 88.6867 253.405 88.5543 252.541 89.2161 252.293 C 91.4664 251.676 94.6432 252.541 97.8201 252.788 C 98.3495 252.664 98.7466 252.541 99.2761 252.417 C 99.6732 251.923 99.8056 251.058 99.8056 250.564 C 101.262 250.687 102.585 250.934 103.777 251.181 C 119.661 246.363 135.942 240.803 153.415 235.243 C 157.121 233.019 160.827 230.795 164.401 229.807 C 169.696 228.819 176.447 230.425 181.609 230.795 C 180.815 222.27 193.39 218.07 190.875 209.421 C 194.316 209.544 199.479 209.915 199.744 207.444 C 200.538 200.154 203.185 191.876 212.319 187.429 C 215.892 186.44 221.452 189.405 222.643 188.046 C 223.967 186.564 221.452 184.71 220.261 183.104 C 230.585 185.081 240.91 187.305 250.97 189.776 C 253.485 189.653 254.412 188.911 254.676 187.676 C 255.073 186.44 254.941 184.958 255.338 183.598 C 251.367 181.745 246.734 180.757 242.366 179.645");
+          clip-path: path("M 235.351 50.1622 C 234.689 50.0386 234.159 49.9151 233.497 49.668 C 234.292 49.9151 234.953 50.0386 235.351 50.1622 M 19.9876 76.2317 C 22.8997 77.8378 26.0765 79.444 28.9886 80.6795 C 31.9007 81.9151 34.6805 82.7799 36.5336 83.027 C 40.5047 84.139 38.122 88.0927 39.0486 91.1815 C 42.0931 89.3282 44.6081 91.9228 47.6525 90.0695 C 47.7849 90.5637 50.4323 90.3166 53.6091 90.0695 C 56.7859 89.8224 60.6246 89.2046 63.1396 88.7104 C 63.1396 88.7104 63.5367 88.3398 64.4633 87.8456 C 65.3899 87.3513 67.1106 86.7336 69.6256 86.3629 C 71.3464 86.1158 71.0817 85.0039 70.817 84.0154 C 71.0817 85.0039 71.0817 85.0039 71.2141 86.1158 C 72.4054 83.7683 76.2441 85.251 77.7001 83.8919 C 77.9648 84.8803 77.9648 84.8803 78.0972 85.9923 C 78.8914 85.3745 79.6856 84.8803 80.4798 84.6332 C 81.274 84.3861 82.2006 84.2626 82.9948 84.2626 C 84.7156 84.139 86.4364 84.139 88.0248 83.3977 C 88.1572 84.3861 88.1572 84.3861 88.4219 85.4981 C 90.1427 85.251 91.7311 85.0039 91.8635 86.1158 C 91.9959 87.1042 91.9959 87.1042 92.1282 88.2162 C 93.0548 88.5869 94.2461 88.2162 95.3051 87.8456 C 96.364 87.5985 97.1582 87.4749 97.2906 88.5869 C 97.1582 87.5985 97.1582 87.5985 97.0259 86.4865 C 103.777 85.8687 108.807 86.2394 113.969 86.9807 C 117.411 87.8456 120.984 88.2162 124.558 88.4633 C 128.265 88.7104 131.971 88.7104 135.81 88.4633 C 143.487 88.2162 151.297 87.1042 158.974 86.61 C 160.695 86.7336 162.416 84.6332 160.96 82.5328 C 162.68 82.6564 164.401 82.6564 165.99 82.7799 C 169.299 83.027 167.975 79.8147 171.284 80.0618 C 185.183 78.4556 198.949 80.556 212.451 83.2741 L 222.511 85.4981 C 225.82 86.2394 229.129 87.2278 232.571 87.9691 C 234.292 88.3398 235.88 88.7104 237.601 89.0811 L 242.631 90.3166 C 245.94 91.0579 249.382 91.7992 252.823 92.2934 C 249.646 90.8108 246.999 89.3282 244.219 87.9691 C 242.896 87.3513 241.439 86.7336 239.983 86.2394 C 238.527 85.7452 236.807 85.4981 235.086 85.251 C 235.351 84.2626 236.012 82.1622 234.292 81.7915 C 231.777 80.9266 229.129 80.1853 226.482 79.5676 C 223.835 78.9498 221.187 78.4556 218.672 77.9614 C 216.157 77.3436 213.907 76.7259 212.054 75.9846 C 210.068 75.1197 208.48 74.2548 207.421 73.0193 C 205.832 71.6602 204.774 68.3243 199.479 67.4595 L 204.774 68.3243 C 204.906 67.3359 205.303 65.2355 205.303 65.2355 C 198.42 62.888 189.551 60.7876 182.403 58.9344 C 182.403 58.9344 182.668 56.834 182.8 55.8456 L 179.094 55.4749 C 178.432 53.4981 179.094 52.2625 180.683 51.5212 C 181.477 51.1506 182.536 50.7799 183.727 50.6564 C 184.918 50.5328 186.374 50.4093 187.83 50.4093 C 190.743 50.4093 194.184 50.6564 197.361 50.7799 C 198.155 50.7799 198.949 50.9035 199.744 50.9035 C 200.538 51.027 201.2 51.027 201.994 51.1506 C 203.45 51.2741 204.774 51.3977 205.965 51.5212 C 206.097 50.5328 206.494 48.4324 206.759 47.3205 L 203.053 46.7027 L 203.45 44.6023 C 206.23 45.0965 209.009 45.4672 211.657 45.9614 C 214.304 46.4556 216.951 46.8263 219.466 47.3205 C 221.981 47.8147 224.629 48.3089 227.276 48.9266 C 228.335 49.1737 229.394 49.4208 230.585 49.5444 C 229.526 49.2973 228.6 49.1737 227.938 49.0502 C 228.203 48.0618 228.467 46.9498 226.614 46.5792 C 228.467 46.9498 230.453 47.444 232.571 47.9382 C 234.556 48.4324 236.674 49.0502 238.792 49.5444 C 243.028 50.5328 247.264 51.2741 251.235 51.2741 C 253.353 50.7799 252.558 47.0734 247.131 44.7259 C 244.352 43.9846 241.969 43.4903 239.586 42.8726 C 237.204 42.2548 234.821 41.7606 232.041 41.1429 L 232.571 39.0425 C 233.497 39.2896 234.556 39.5367 235.748 39.7838 C 236.807 40.1544 237.998 40.5251 239.189 40.8958 C 241.572 41.6371 243.954 42.1313 245.94 42.1313 C 248.19 41.5135 243.028 38.1776 245.146 37.5598 C 247.131 38.0541 248.984 38.5483 251.235 37.9305 C 248.323 37.1892 244.881 36.695 241.572 35.9537 C 239.851 35.583 238.13 35.2124 236.542 34.8417 C 234.953 34.471 233.365 33.9768 231.909 33.4826 C 230.188 32 228.467 30.6409 228.997 28.5405 C 226.482 28.2934 224.099 27.7992 221.981 27.1815 C 219.863 26.5637 217.746 25.8224 215.892 24.834 C 212.186 22.8571 209.009 20.2625 206.494 17.1737 C 205.303 15.444 199.082 14.8263 193.522 14.332 L 187.963 12.8494 C 185.845 12.3552 183.595 11.9846 181.477 11.4903 C 179.226 11.1197 177.109 10.6255 174.858 10.2548 C 173.799 10.0077 172.608 9.88417 171.549 9.63707 L 168.24 9.26641 C 163.739 8.7722 159.239 8.15444 154.871 7.78378 C 150.37 7.41313 145.87 7.16602 141.369 6.79537 C 136.869 6.42471 132.368 6.30116 127.868 6.17761 C 123.367 5.9305 118.999 5.6834 114.498 5.55985 C 109.866 4.94208 105.497 4.69498 101.129 4.32432 C 96.7611 4.07722 92.393 3.83012 88.1572 3.33591 C 87.0982 2.96525 85.3775 2.34749 83.6567 1.72973 C 81.9359 1.11197 80.2151 0.617761 79.1562 0.247104 C 61.6836 -0.864865 40.7694 4.44788 25.0176 10.5019 C 21.0465 12.1081 18.3992 16.0618 16.8108 19.6448 C 15.2223 23.2278 14.6929 26.4402 14.6929 26.4402 C 13.3692 29.0347 12.8397 33.6062 15.3547 35.0888 C 16.4137 35.0888 17.7373 34.8417 19.3258 34.5946 C 20.7818 34.471 22.5026 34.2239 24.091 34.2239 C 27.1355 34.1004 29.9152 34.471 30.4447 36.5714 C 30.7094 37.5598 28.8563 38.0541 26.8707 38.5483 C 28.062 42.6255 24.8852 52.139 23.1644 52.7568 C 22.635 53.9923 19.9876 56.9575 17.605 59.9228 C 15.09 62.888 12.7073 65.8533 12.1779 67.0888 C 9.92761 69.3127 14.2958 72.8958 19.9876 76.2317 M 230.585 49.1737 C 231.512 49.4208 232.571 49.5444 233.63 49.7915 C 232.571 49.5444 231.512 49.2973 230.585 49.1737 M 242.366 179.645 C 238.13 178.533 234.159 177.174 231.115 174.95 C 228.865 174.332 234.953 170.131 233.365 166.795 C 230.982 166.178 226.35 165.066 224.099 164.571 C 222.908 160 228.6 156.911 227.408 152.34 C 226.085 147.768 215.892 148.263 214.172 145.05 C 210.862 142.95 212.319 142.208 215.495 142.085 C 218.672 142.085 223.57 142.826 227.144 143.691 C 225.423 140.479 231.909 144.803 232.703 142.085 C 234.159 136.649 235.748 131.212 227.011 124.911 C 224.893 122.934 228.467 119.475 229.129 116.757 C 199.346 109.961 166.387 104.278 135.28 106.255 C 128.794 106.625 122.176 106.255 115.293 105.761 C 108.41 105.266 101.526 104.402 94.5109 103.66 C 91.0693 103.29 87.4953 102.919 84.0538 102.672 C 80.6122 102.425 77.1706 102.301 73.7291 102.178 C 66.8459 101.931 60.2275 102.301 53.8738 103.29 C 50.0352 103.784 45.0052 102.795 40.2399 102.425 C 35.4747 102.054 30.9741 102.301 28.4592 105.884 L 36.0041 105.884 C 32.1655 107.861 28.4592 107.985 24.6205 107.737 C 20.7818 107.49 17.0755 106.749 13.2368 107.49 C 13.3692 110.332 13.3692 111.691 10.8542 113.174 C 15.8842 112.927 23.2968 111.568 28.3268 112.927 L 28.3268 117.127 C 23.4292 118.61 15.8842 115.768 10.8542 117.375 C 10.8542 118.734 10.9866 121.575 10.9866 122.934 C 10.9866 124.293 8.60393 124.417 6.08893 124.541 C 8.60393 124.417 13.5016 124.293 15.8842 124.293 C 15.8842 125.653 16.0165 128.494 16.0165 129.853 C 16.0165 131.212 13.6339 131.336 11.1189 131.459 C 11.2513 134.301 8.86867 137.143 11.3837 138.502 C 13.7663 138.378 16.2813 138.378 18.6639 138.378 C 9.00103 139.985 4.50052 147.151 4.63288 151.351 C 7.01551 149.869 7.14788 154.07 9.39814 152.587 C 2.38263 157.035 -4.23578 162.842 5.16236 163.954 C 46.0641 164.571 87.2306 166.054 128.529 169.884 C 152.753 172.108 177.109 175.073 201.067 179.151 C 181.08 178.903 161.489 180.633 141.104 180.633 C 131.971 184.463 70.5522 186.07 54.8004 184.463 C 54.2709 184.463 53.8738 184.587 53.3444 184.587 C 44.7404 184.093 34.2834 184.71 27.0031 188.046 C 23.6939 190.023 20.2523 192.494 16.9431 194.842 C 18.5315 196.201 19.9876 197.683 21.1789 199.042 C 17.7373 198.919 14.2958 198.672 12.9721 200.278 C 5.69183 203.985 9.79524 208.185 12.575 213.992 C 14.5605 216.587 11.9131 220.417 15.09 223.012 C 12.8397 222.888 11.6484 222.888 9.39814 222.641 C 9.1334 225.112 16.4137 221.405 14.8252 225.359 C 12.575 224.371 10.1923 225.853 7.80972 225.73 C 8.60393 229.066 15.7518 226.965 15.3547 230.178 C 14.1634 230.919 8.86867 225.73 8.47156 229.807 C 8.33919 230.672 10.7218 230.795 11.7808 230.795 C 4.76525 232.031 0.794209 235.861 7.28025 240.309 C 5.02999 240.185 1.85315 238.456 -0.529473 239.073 L -0.529473 239.197 C 0.661841 239.32 2.64736 240.185 3.83868 240.185 C 2.51499 240.062 1.19131 240.062 -0.132368 239.938 C 0.132368 240.556 0.264736 241.05 0.529473 241.668 C 1.58842 242.162 2.51499 242.533 3.57394 242.656 C 2.64736 242.656 1.85315 242.533 0.926577 242.533 C 1.58842 243.892 2.38263 245.127 3.17684 246.363 C 6.35367 248.958 9.39814 252.788 11.1189 252.911 C 25.0176 254.764 38.9162 256.124 52.8149 256.494 C 52.8149 255.012 52.153 253.529 53.212 252.788 C 56.7859 251.429 59.698 256.371 63.4043 255.012 C 63.5367 254.147 63.5367 253.405 63.6691 252.541 C 66.4488 253.529 69.3609 254.888 72.4054 256 C 77.8325 255.629 83.3919 255.135 88.819 254.27 C 88.6867 253.405 88.5543 252.541 89.2161 252.293 C 91.4664 251.676 94.6432 252.541 97.8201 252.788 C 98.3495 252.664 98.7466 252.541 99.2761 252.417 C 99.6732 251.923 99.8056 251.058 99.8056 250.564 C 101.262 250.687 102.585 250.934 103.777 251.181 C 119.661 246.363 135.942 240.803 153.415 235.243 C 157.121 233.019 160.827 230.795 164.401 229.807 C 169.696 228.819 176.447 230.425 181.609 230.795 C 180.815 222.27 193.39 218.07 190.875 209.421 C 194.316 209.544 199.479 209.915 199.744 207.444 C 200.538 200.154 203.185 191.876 212.319 187.429 C 215.892 186.44 221.452 189.405 222.643 188.046 C 223.967 186.564 221.452 184.71 220.261 183.104 C 230.585 185.081 240.91 187.305 250.97 189.776 C 253.485 189.653 254.412 188.911 254.676 187.676 C 255.073 186.44 254.941 184.958 255.338 183.598 C 251.367 181.745 246.734 180.757 242.366 179.645");
+  transform-origin: 0px 0px;
+  width: 512px;
+  height: 512px;
+}
+
+/* Product description */
+
+.description h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.description h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.description h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.description h4 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.description h5 {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.description h6 {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.description a {
+  text-decoration: underline;
+  color: #06c;
+}
+
+.description [data-list="bullet"] {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.description [data-list="ordered"] {
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+/* width */
+
+.card::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+
+.card::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.dark .card::-webkit-scrollbar-track {
+  background: var(--neutral-900);
+  border-radius: var(--rounded-xl);
+}
+
+/* Handle */
+
+.card::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-500);
+  border-radius: var(--rounded-full);
+  border: var(--rounded) solid white;
+}
+
+html.dark .card::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-800);
+  border-radius: var(--rounded-full);
+  border: var(--rounded) solid var(--neutral-900);
+}
+
+/* Handle on hover */
+
+.card::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-050);
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: var(--neutral-200);
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: var(--neutral-950);
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-500);
+  border-radius: var(--rounded-full);
+  border: var(--rounded) solid var(--neutral-200);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-800);
+  border-radius: var(--rounded-full);
+  border: var(--rounded) solid var(--neutral-950);
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22201ece;
+}
+
+/* Remove arrows from input number */
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+  -webkit-appearance: textfield;
+          appearance: textfield;
+}
+
+/** Quill Editor DARK MODE */
+
+/* Border colors */
+
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing,
+html.dark .ql-container.ql-snow,
+html.dark .ql-toolbar.ql-snow,
+html.dark .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options,
+html.dark .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label,
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing input {
+  border-color: var(--neutral-800);
+}
+
+/* Text format and button colors */
+
+html.dark .ql-snow .ql-stroke,
+html.dark .ql-header.ql-picker,
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing::before {
+  stroke: var(--neutral-500);
+  color: var(--neutral-500);
+}
+
+/* Text format dropdown background color and removed shadow */
+
+html.dark .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options,
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing,
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing input {
+  background-color: var(--neutral-915);
+  box-shadow: none;
+}
+
+/* Adjust borders */
+
+/* Toolbar */
+
+.ql-toolbar.ql-snow {
+  border-top-left-radius: var(--rounded);
+  border-top-right-radius: var(--rounded);
+}
+
+/* Text editor */
+
+.ql-container.ql-snow {
+  border-bottom-left-radius: var(--rounded);
+  border-bottom-right-radius: var(--rounded);
+  height: 60%;
+}
+
+/* Anchor input */
+
+.ql-container.ql-snow .ql-tooltip.ql-editing,
+.ql-container.ql-snow .ql-tooltip.ql-editing input {
+  border-radius: var(--rounded);
+}
+
+/* Focus outline */
+
+.quill:focus-within {
+  outline: 2px solid #93c5fd;
+  border-radius: var(--rounded);
+}
+
+html.dark .quill:focus-within {
+  outline: 2px solid #60a5fa;
+}
+
+.ql-editor {
+  outline: none;
+}
+
+/* Remove anchor input outline and change border color */
+
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing input:focus {
+  outline: none;
+  border-color: var(--blue-500);
+}
+
+/* Change text editor font */
+
+.ql-container {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 15px;
+}
+
+/* Text editor color */
+
+html.dark .ql-container.ql-snow,
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing input {
+  color: var(--neutral-300);
+}
+
+/* Placeholder text color and removed italic */
+
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing input::-moz-placeholder {
+  color: var(--neutral-600);
+  font-style: normal;
+}
+
+.ql-editor.ql-blank::before,
+html.dark .ql-container.ql-snow .ql-tooltip.ql-editing input::placeholder {
+  color: var(--neutral-600);
+  font-style: normal;
+}
+
+/* Anchor modal over everything else */
+
+.ql-container.ql-snow .ql-tooltip.ql-editing {
+  z-index: 50;
+}
+
+.first-letter\:capitalize::first-letter {
+  text-transform: capitalize;
+}
+
+.placeholder\:text-neutral-400::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity));
+}
+
+.placeholder\:text-neutral-400::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity));
+}
+
+.hover\:border-neutral-900:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(23 23 23 / var(--tw-border-opacity));
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-neutral-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-neutral-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-neutral-200\/90:hover {
+  background-color: rgb(229 229 229 / 0.9);
+}
+
+.hover\:bg-neutral-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-neutral-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-neutral-900:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-sky-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(186 230 253 / var(--tw-bg-opacity));
+}
+
+.hover\:text-neutral-50:hover {
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity));
+}
+
+.hover\:text-red-50:hover {
+  --tw-text-opacity: 1;
+  color: rgb(254 242 242 / var(--tw-text-opacity));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
+}
+
+.hover\:brightness-75:hover {
+  --tw-brightness: brightness(.75);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.hover\:brightness-\[\.7\]:hover {
+  --tw-brightness: brightness(.7);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.focus\:border-blue-500:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-blue-200:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(191 219 254 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-blue-300:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(147 197 253 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-blue-400:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(96 165 250 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-blue-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-gray-100:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(243 244 246 / var(--tw-ring-opacity));
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+.disabled\:border-neutral-300:disabled {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity));
+}
+
+.disabled\:bg-neutral-100:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.disabled\:text-neutral-800:disabled {
+  --tw-text-opacity: 1;
+  color: rgb(38 38 38 / var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
+.group:hover .group-hover\:translate-y-0 {
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:brightness-\[6\] {
+  --tw-brightness: brightness(6);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+:is(.dark .dark\:block) {
+  display: block;
+}
+
+:is(.dark .dark\:hidden) {
+  display: none;
+}
+
+:is(.dark .dark\:divide-neutral-900) > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(23 23 23 / var(--tw-divide-opacity));
+}
+
+:is(.dark .dark\:border-neutral-300) {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:border-neutral-800) {
+  --tw-border-opacity: 1;
+  border-color: rgb(38 38 38 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:border-neutral-900) {
+  --tw-border-opacity: 1;
+  border-color: rgb(23 23 23 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:border-b-neutral-800) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(38 38 38 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:border-t-neutral-900) {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(23 23 23 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:bg-accent-dark) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-gray-900) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-green-300) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-green-500) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-neutral-800) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-neutral-900) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-neutral-915) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 21 21 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-neutral-925) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(16 16 16 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-neutral-950) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 10 10 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-red-500) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-red-600) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-sky-400) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:text-gray-100) {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-green-100) {
+  --tw-text-opacity: 1;
+  color: rgb(220 252 231 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-green-700) {
+  --tw-text-opacity: 1;
+  color: rgb(21 128 61 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-100) {
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-200) {
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-300) {
+  --tw-text-opacity: 1;
+  color: rgb(212 212 212 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-400) {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-50) {
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-500) {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-600) {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-800) {
+  --tw-text-opacity: 1;
+  color: rgb(38 38 38 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-neutral-950) {
+  --tw-text-opacity: 1;
+  color: rgb(10 10 10 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:text-white) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:placeholder-neutral-700)::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-placeholder-opacity));
+}
+
+:is(.dark .dark\:placeholder-neutral-700)::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-placeholder-opacity));
+}
+
+:is(.dark .dark\:brightness-0) {
+  --tw-brightness: brightness(0);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+:is(.dark .dark\:brightness-100) {
+  --tw-brightness: brightness(1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+:is(.dark .dark\:brightness-\[6\]) {
+  --tw-brightness: brightness(6);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+:is(.dark .dark\:placeholder\:text-neutral-600)::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:placeholder\:text-neutral-600)::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-neutral-200:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-neutral-800:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-neutral-900:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-neutral-915:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 21 21 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-red-400:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-red-500:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:hover\:bg-sky-300:hover) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(125 211 252 / var(--tw-bg-opacity));
+}
+
+:is(.dark .hover\:dark\:bg-neutral-800):hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:focus\:ring-blue-400:focus) {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(96 165 250 / var(--tw-ring-opacity));
+}
+
+@media (min-width: 640px) {
+  .sm\:max-w-md {
+    max-width: 28rem;
+  }
+
+  .sm\:items-center {
+    align-items: center;
+  }
+
+  .sm\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\:pt-0 {
+    padding-top: 0px;
+  }
+
+  .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\:h-screen {
+    height: 100vh;
+  }
+
+  .md\:w-44 {
+    width: 11rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:min-w-\[280px\] {
+    min-width: 280px;
+  }
+
+  .lg\:max-w-5xl {
+    max-width: 64rem;
+  }
+
+  .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .lg\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:p-0 {
+    padding: 0px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:w-80 {
+    width: 20rem;
+  }
+
+  .\32xl\:min-w-\[310px\] {
+    min-width: 310px;
+  }
+
+  .\32xl\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

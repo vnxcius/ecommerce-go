@@ -1,0 +1,88 @@
+{{define "title"}}Meu perfil{{end}}
+{{define "main"}}
+{{template "header" .}}
+<section class="max-w-6xl mx-auto my-16">
+  <div class="flex divide-x">
+    <div class="w-2/3">
+      <h1 class="text-3xl font-light">
+        Meu perfil
+      </h1>
+
+      <form id="form" class="my-10 pr-20" method="post" novalidate>
+        <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+        <div class="space-y-5 w-full">
+          <div class='flex flex-col'>
+            <label for="fullName" class="text-sm font-medium">
+              Nome completo
+            </label>
+            {{with .Form.FieldErrors.fullName}}
+            <label for="fullName" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+            <input id="fullName" name="fullName" maxlength="50" type="text" value="{{.User.FullName}}"
+              placeholder="Fulano de Tal" class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+          </div>
+          <div class='flex flex-col'>
+            <label for="email" class="text-sm font-medium">
+              Email
+            </label>
+            {{with .Form.FieldErrors.email}}
+            <label for="email" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+            <input id="email" name="email" maxlength="50" type="email" value="{{.User.Email}}" autocomplete="off"
+              placeholder="meuemail@loremcommerce.com.br"
+              class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+          </div>
+          <div class='flex flex-col'>
+            <label for="phone" class="text-sm font-medium">
+              Telefone
+            </label>
+            {{with .Form.FieldErrors.phone}}
+            <label for="phone" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+            <input id="phone" name="phone" maxlength="15" type="tel" value="{{.User.Phone}}" oninput="formatPhone()"
+              placeholder="(00) 00000-0000"
+              class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+          </div>
+          <div class='flex flex-col'>
+            <label for="cpf" class="text-sm font-medium">
+              CPF
+            </label>
+            <span class="text-neutral-500 text-xs">
+              Não é possível alterar seu CPF. Entre em contato com o suporte se necessário.
+            </span>
+            <input id="cpf" name="cpf" maxlength="14" type="tel" value="{{.User.CPF}}" disabled
+              class="bg-neutral-100 text-neutral-600 px-4 py-1.5 rounded">
+          </div>
+          <div class='flex flex-col'>
+            <label for="birthDate" class="text-sm font-medium">
+              Data de nascimento
+            </label>
+            <span class="text-neutral-500 text-xs">
+              Não é possível alterar sua data de nascimento. Entre em contato com o suporte se necessário.
+            </span>
+            <p class="bg-neutral-100 text-neutral-600 px-4 py-1.5 rounded">
+              {{humanDateShort .User.BirthDate}}
+            </p>
+          </div>
+
+          {{template "success" .}}
+          {{template "error" .}}
+
+          <button type="submit"
+            class="block w-fit mx-auto text-white bg-accent font-medium rounded-full text-sm px-16 py-2.5 text-center border my-4
+          hover:bg-neutral-700 focus:ring-2 focus:outline-none focus:ring-blue-400 dark:bg-accent-dark dark:text-neutral-800 dark:hover:bg-neutral-200">
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="w-1/3">
+      {{template "profile-sidebar" .}}
+    </div>
+  </div>
+</section>
+{{template "footer" .}}
+<script src="/static/js/form-formatter.js"></script>
+<script>formatCpf(); formatPhone();</script>
+{{end}}

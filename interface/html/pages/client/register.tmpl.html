@@ -1,0 +1,106 @@
+{{define "title"}}Registrar-se{{end}}
+{{define "main"}}
+<section class="h-screen flex flex-col justify-center lg:max-w-5xl mx-auto overflow-hidden">
+  <form id="form" method="post" class="flex items-center justify-between w-full" novalidate>
+    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+    <section class="space-y-10">
+      <a href="/" class="block w-fit">
+        <img src="/static/img/logoipsum-359.svg" alt="" class="w-24">
+      </a>
+      <h2 class="font-extrabold text-3xl">
+        Cadastro
+      </h2>
+      <div class="space-y-5 w-96">
+        <div class='flex flex-col'>
+          <label for="fullName" class="text-sm font-medium">
+            Nome completo
+          </label>
+          {{with .Form.FieldErrors.fullName}}
+          <label for="fullName" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="fullName" name="fullName" maxlength="50" type="text" placeholder="Fulano de Tal"
+            value="{{.Form.FullName}}" class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none"
+            required autofocus>
+        </div>
+        <div class='flex flex-col'>
+          <label for="birthDate" class="text-sm font-medium">
+            Data de Nascimento
+          </label>
+          {{with .Form.FieldErrors.birthDate}}
+          <label for="birthDate" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="birthDate" name="birthDate" maxlength="50" type="date" value="{{.Form.BirthDate}}"
+            class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+        </div>
+        <div class='flex flex-col'>
+          <label for="cpf" class="text-sm font-medium">
+            CPF
+          </label>
+          {{with .Form.FieldErrors.cpf}}
+          <label for="cpf" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="cpf" name="cpf" maxlength="14" type="tel" placeholder="123.456.789-01" value="{{.Form.CPF}}"
+            oninput="formatCpf()" class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+        </div>
+        <div class='flex flex-col'>
+          <label for="phone" class="text-sm font-medium">
+            Telefone
+          </label>
+          {{with .Form.FieldErrors.phone}}
+          <label for="phone" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="phone" name="phone" maxlength="15" type="tel" placeholder="(11) 99999-9999" value="{{.Form.Phone}}"
+            oninput="formatPhone()" class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+        </div>
+        <div class='flex flex-col'>
+          <label for="email" class="text-sm font-medium">
+            Email
+          </label>
+          {{with .Form.FieldErrors.email}}
+          <label for="email" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="email" name="email" maxlength="50" type="email" placeholder="meuemail@loremcommerce.com.br"
+            value="{{.Form.Email}}" class="bg-transparent text-lg border-b border-neutral-400 focus:outline-none">
+        </div>
+        <div class='flex flex-col'>
+          <label for="password" class="text-sm font-medium">
+            Senha
+          </label>
+          {{with .Form.FieldErrors.password}}
+          <label for="password" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="password" name="password" maxlength="50" type="password" placeholder="•••••••••••"
+            class="bg-transparent border-b border-neutral-400 focus:outline-none">
+        </div>
+        <div class='flex flex-col'>
+          <label for="confirmPassword" class="text-sm font-medium">
+            Confirmar senha
+          </label>
+          {{with .Form.FieldErrors.confirmPassword}}
+          <label for="confirmPassword" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input id="confirmPassword" name="confirmPassword" maxlength="50" type="password" placeholder="•••••••••••"
+            class="bg-transparent border-b border-neutral-400 focus:outline-none">
+        </div>
+      </div>
+
+      {{template "error" .}}
+
+      <div class="flex flex-col items-center w-fit mx-auto py-10 space-y-2">
+        <button type="submit" class="bg-neutral-800 rounded-full text-neutral-100 font-bold px-16 py-2">
+          Registrar
+        </button>
+
+        <a href="/login" class="w-fit block">
+          Já possui Conta? Clique aqui
+        </a>
+      </div>
+    </section>
+
+    <div class="login-img scale-[2]">
+      <img src="/static/img/login_bg.webp" alt="" class="-translate-y-9 w-1/2" draggable="false">
+    </div>
+  </form>
+</section>
+<script src="/static/js/form-formatter.js"></script>
+{{end}}

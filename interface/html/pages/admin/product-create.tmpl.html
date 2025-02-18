@@ -1,0 +1,228 @@
+{{define "title"}}Criar produto{{end}}
+
+{{define "main"}}
+<div class="flex">
+  {{template "sidebar" .}}
+  <section class="my-8 mx-14 w-full">
+    <a href="/produtos"
+      class="w-fit flex items-center gap-2 cursor-pointer px-3 py-0.5 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-800">
+      <img src="/static/icons/arrow-left.svg" class="w-4 dark:brightness-[6]" alt='Voltar' />
+      <span class="dark:text-neutral-300">Produtos</span>
+    </a>
+    <div class="m-2">
+      <h2 class="text-xl font-semibold text-neutral-600 dark:text-neutral-300">
+        Cadastrar produto
+      </h2>
+    </div>
+
+    <form method="post" class="flex overflow-hidden items-stretch divide-x dark:divide-neutral-900"
+      enctype="multipart/form-data" novalidate>
+      <!-- Incluir CSRF Token -->
+      <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+      <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg, image/webp" hidden>
+      <input type="file" name="images" id="images" accept="image/png, image/jpeg, image/jpg, image/webp" multiple
+        hidden>
+      <section class="px-4 w-1/3">
+        <div class="mb-2">
+          <h3 class="text-lg font-semibold text-neutral-600 dark:text-neutral-500">
+            1. Imagens do produto
+          </h3>
+          <div class="-translate-x-2">
+            <img src="/static/icons/exclamation.svg" alt="" class="w-5 float-left" draggable="false">
+            <h3 class="text-sm text-neutral-500">
+              No máximo 4 imagens com tamanho máximo de 10Mb.
+            </h3>
+          </div>
+          {{with .Form.FieldErrors.image}}
+          <label for="image" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+        </div>
+
+        <label for="image" class="cursor-pointer">
+          <div
+            class="bg-neutral-200 border border-neutral-300 h-[550px] rounded-md flex flex-col overflow-hidden justify-center relative dark:bg-neutral-915 dark:border-neutral-800">
+            <img alt="" id="imagePreview" class="absolute w-full h-full rounded-md object-cover z-10 hidden"
+              loading="lazy">
+            <img src="/static/icons/gallery-add.svg" alt="Adicionar"
+              class="w-fit h-fit mx-auto brightness-[3] dark:brightness-100">
+          </div>
+        </label>
+        <label for="images">
+          <div id="imagesPreview" class="flex flex-wrap justify-evenly gap-3 my-5">
+            <div
+              class="bg-neutral-200 border border-neutral-300 w-20 h-20 rounded-md flex flex-col overflow-hidden justify-center relative cursor-pointer dark:bg-neutral-915 dark:border-neutral-800">
+              <img src="/static/icons/gallery-add.svg" alt="Adicionar"
+                class="w-fit h-fit mx-auto brightness-[3] dark:brightness-100">
+            </div>
+          </div>
+        </label>
+      </section>
+
+      <section class="px-4 w-2/3">
+        <h3 class="text-lg font-semibold text-neutral-600 dark:text-neutral-500">
+          2. Informações do produto
+        </h3>
+        <div class="mb-2 -translate-x-2">
+          <img src="/static/icons/exclamation.svg" alt="" class="w-5 float-left" draggable="false">
+          <h3 class="text-sm text-neutral-500">
+            Informe o nome e a descrição do produto.
+          </h3>
+        </div>
+        <div class="flex flex-col gap-1 mb-2">
+          <label for="name" class='text-sm font-medium dark:text-neutral-500'>
+            Nome
+          </label>
+          {{with .Form.FieldErrors.name}}
+          <label for="name" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input type="text" name="name" id="name" value="{{.Form.Name}}" placeholder="Camiseta Streetwear Preta G"
+            autocomplete="off" required autofocus
+            class="w-full p-2 bg-white border border-neutral-300 rounded font-normal focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700" />
+        </div>
+        <label for="editor">
+          <span class="text-sm font-medium dark:text-neutral-500">
+            Descrição
+          </span>
+        </label>
+        {{with .Form.FieldErrors.description}}
+        <label for="description" class='text-red-500 text-sm'>{{.}}</label>
+        {{end}}
+        <div id="editor">{{.Form.Description}}</div>
+        <input type="text" name="description" id="description" value="{{.Form.Description}}" required hidden>
+      </section>
+
+      <section class="px-4 w-fit flex flex-col space-y-3">
+        <h3 class="text-lg font-semibold text-neutral-600 dark:text-neutral-500">
+          3. Características do produto
+        </h3>
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center gap-2">
+            <label for="category">
+              <span class="text-sm font-medium dark:text-neutral-500">
+                Categoria
+              </span>
+            </label>
+            <hr class="w-full dark:border-t-neutral-900">
+          </div>
+          {{with .Form.FieldErrors.category}}
+          <label for="name" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <select name="category" id="category" required
+            class="w-56 p-2 bg-white border border-neutral-300 rounded focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700">
+            <option value="{{.Form.Category}}" disabled selected>{{or .Form.Category "Selecionar categoria"}}</option>
+            {{range .ProductCategories}}
+            <option value="{{.ID}}">{{.Name}}</option>
+            {{end}}
+          </select>
+        </div>
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center gap-2">
+            <label for="category">
+              <span class="text-sm font-medium dark:text-neutral-500">
+                Tamanho
+              </span>
+            </label>
+            <hr class="w-full dark:border-t-neutral-900">
+          </div>
+          {{with .Form.FieldErrors.size}}
+          <label for="size" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <select name="size" id="size" required
+            class="w-56 p-2 bg-white border border-neutral-300 rounded focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700">
+            <option value="" disabled selected>Selecionar tamanho</option>
+            {{range .ProductSizes}}
+            <option value="{{.ID}}">{{.Name}}</option>
+            {{end}}
+          </select>
+        </div>
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center gap-2">
+            <label for="category">
+              <span class="text-sm font-medium dark:text-neutral-500">
+                Cor
+              </span>
+            </label>
+            <hr class="w-full dark:border-t-neutral-900">
+          </div>
+          {{with .Form.FieldErrors.color}}
+          <label for="color" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <select name="color" id="color" required
+            class="w-56 p-2 bg-white border border-neutral-300 rounded focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700">
+            <option value="" disabled selected>Selecionar cor</option>
+            {{range .ProductColors}}
+            <option value="{{.ID}}">{{.Name}}</option>
+            {{end}}
+          </select>
+        </div>
+
+        <div class="flex flex-col w-full gap-1">
+          <label for="price" class='text-sm font-medium dark:text-neutral-500'>
+            Preço <span class="text-xs text-neutral-500">(R$)</span>
+          </label>
+          {{with .Form.FieldErrors.price}}
+          <label for="price" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input type="number" name="price" id="price" value="{{.Form.Price}}" placeholder="19.99" autocomplete="off"
+            required
+            class="p-2 bg-white border border-neutral-300 rounded font-normal focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700" />
+        </div>
+        <div class="flex flex-col w-full gap-1">
+          <label for="discount" class='text-sm font-medium dark:text-neutral-500'>
+            Desconto <span title="Desconto em porcentagem" class="text-xs text-neutral-500">(%)</span>
+          </label>
+          {{with .Form.FieldErrors.discount}}
+          <label for="discount" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input type="number" name="discount" id="discount" value="{{.Form.Discount}}" placeholder="10"
+            autocomplete="off"
+            class="p-2 bg-white border border-neutral-300 rounded font-normal focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700" />
+        </div>
+        <div class="flex flex-col w-full gap-1">
+          <label for="inStock" class='text-sm font-medium dark:text-neutral-500'>
+            Quantidade em estoque
+          </label>
+          {{with .Form.FieldErrors.inStock}}
+          <label for="inStock" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+          <input type="number" name="inStock" id="inStock" value="{{.Form.InStock}}" placeholder="15" autocomplete="off"
+            required
+            class="p-2 bg-white border border-neutral-300 rounded font-normal focus:ring-2 focus:ring-blue-300 focus:outline-none placeholder:text-neutral-400 dark:bg-neutral-915 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-300 dark:placeholder-neutral-700" />
+        </div>
+        <label for="active" class="flex items-center gap-2 cursor-pointer">
+          <span class="text-sm font-medium dark:text-neutral-500">
+            Produto ativo?
+          </span>
+          <input type="checkbox" name="active" id="active" checked>
+        </label>
+        <button type="submit"
+          class="bg-accent text-neutral-50 text-center rounded-md w-full px-8 py-2 font-semibold dark:bg-accent-dark dark:text-neutral-800">
+          Cadastrar produto
+        </button>
+        
+        {{template "success" .}}
+        {{template "error" .}}
+        
+      </section>
+    </form>
+  </section>
+</div>
+<script src="/static/js/script-admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.3/dist/quill.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.3/dist/quill.snow.css" rel="stylesheet">
+
+<script>
+  const options = {
+    placeholder: 'Digite a descrição do produto...',
+    theme: 'snow',
+  };
+
+  const quill = new Quill('#editor', options);
+
+  // Passar conteúdo do editor para o formulário
+  quill.on('text-change', () => {
+    const description = document.getElementById('description');
+    description.value = quill.root.innerHTML;
+  });
+</script>
+{{end}}

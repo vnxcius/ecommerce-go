@@ -1,0 +1,133 @@
+{{define "title"}}Início{{end}}
+{{define "main"}}
+{{template "header" .}}
+<section class="h-[calc(100vh-110px)] overflow-hidden w-full relative">
+  <img src="/static/img/hero_bg.webp" alt="" class="w-full brightness-75">
+</section>
+<div class="w-full grid grid-cols-3 place-items-center justify-center py-7 bg-neutral-200">
+  <div class="flex flex-col items-center gap-2">
+    <img src="/static/icons/cards.svg" alt="cards icon" class="w-8">
+    <p>Parcelamos em até 7x sem juros</p>
+  </div>
+  <div class="flex flex-col items-center gap-2">
+    <img src="/static/icons/truck-fast.svg" alt="truck icon" class="w-8">
+    <p>Frete grátis para todo Brasil</p>
+  </div>
+  <div class="flex flex-col items-center gap-2">
+    <img src="/static/icons/3d-rotate.svg" alt="" class="w-8">
+    <p>Troca grátis</p>
+  </div>
+</div>
+
+<section class="max-w-6xl mx-auto my-16 pb-16 border-b border-neutral-300" id="lancamentos">
+  <div class="flex justify-between items-center">
+    <h1 class="font-hubba text-4xl">
+      Lançamentos
+    </h1>
+    <a href="#" class="underline underline-offset-2">
+      Mostrar Tudo
+    </a>
+  </div>
+
+  <div class="flex gap-7 overflow-x-auto py-7">
+    {{template "product-releases" .}}
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto my-16">
+  <h1 class="font-hubba text-4xl">
+    Ofertas
+  </h1>
+
+  <div class="flex justify-between items-start">
+    <div class="grid grid-cols-2 gap-2 grid-rows-2 items-end py-7">
+      {{$count := 0}}
+      {{range .ProductsView}}
+      <!-- Se a contagem for menor que 4 -->
+      {{if lt $count 4}}
+      {{if .Discount}}
+      <a href="/p/{{.Slug}}" class="block">
+        <img src="https://res.cloudinary.com/loremcommerce/image/upload/{{.Image}}" alt="{{.Name}}" loading="lazy"
+          class="w-72 h-72 object-cover transition-all hover:brightness-75">
+      </a>
+      {{end}}
+      {{$count = add $count 1}}
+      {{end}}
+      {{end}}
+    </div>
+
+    <div class="flex flex-col items-center gap-10 mt-10">
+      <img src="/static/img/logoipsum-359.svg" alt="" class="w-28" draggable="false">
+      <p class="font-zing uppercase text-center text-4xl">
+        Monte <br> seu estilo <br> com <br> LoremCommerce.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto my-16">
+  <form action="" class="bg-neutral-200 rounded-lg p-20">
+    <img src="/static/icons/box.svg" alt="" class="w-12 block mx-auto">
+
+    <h1 class="font-hubba text-4xl text-center py-6">
+      Receba nossas novidades e promoções exclusivas!
+    </h1>
+
+    <div class="flex items-center gap-3 w-fit mx-auto">
+      <input type="email" name="email" id="email" placeholder="meuemail@loremcommerce.com.br"
+        class="w-96 px-4 py-1.5 rounded-md border dark:border-neutral-300 dark:text-neutral-300">
+      <span class="text-neutral-500 text-sm">ou</span>
+      <input type="tel" name="phone" id="phone" placeholder="(11) 99999-9999"
+        class="w-96 px-4 py-1.5 rounded-md border dark:border-neutral-300 dark:text-neutral-300">
+    </div>
+  </form>
+</section>
+
+<section class="bg-neutral-925 overflow-hidden">
+  <div class="max-w-6xl mx-auto flex gap-8 py-28 relative">
+    <div class="flex flex-col gap-4 absolute top-0 right-5">
+      <img src="/static/img/bureal.gif" alt="" class="block w-96 -translate-y-5 self-end" loading="lazy">
+      <img src="/static/img/bureal.gif" alt="" class="block w-96 rotate-180 self-end" loading="lazy">
+      <img src="/static/img/bureal.gif" alt="" class="block" loading="lazy">
+    </div>
+    <div class="flex flex-col gap-28 z-10">
+      <a href="/camisetas" class="relative w-fit block">
+        <img src="/static/img/tshirts-bg.png" alt="" class="" loading="lazy">
+        <div class="absolute left-7 bottom-10">
+          <img src="/static/img/blob1.png" alt="" class="" loading="lazy">
+          <p class="font-hubba text-5xl absolute left-7 top-1/3">Camisetas</p>
+        </div>
+      </a>
+
+      <a href="/long-sleeves" class="relative w-fit block">
+        <img src="/static/img/longsleeve-bg.png" alt="" loading="lazy">
+        <div class="absolute right-7 bottom-10">
+          <img src="/static/img/blob1.png" alt="" loading="lazy">
+          <p class="font-hubba text-4xl absolute right-7 top-1/3 w-max">Manga longa</p>
+        </div>
+      </a>
+
+      <img src="/static/img/stars.webp" alt="" class="w-20" draggable="false" loading="lazy">
+    </div>
+    <div class="flex flex-col z-10">
+      <img src="/static/img/logoipsum-359.svg" alt="" class="w-44 block mx-auto mb-20" draggable="false">
+      <a href="/moletons" class="relative w-fit block mb-44">
+        <img src="/static/img/sweatshirts-bg.png" alt="" loading="lazy">
+        <div class="absolute right-7 bottom-10">
+          <img src="/static/img/blob2.png" alt="" loading="lazy">
+          <p class="font-hubba text-5xl absolute right-7 top-1/4">Moletons</p>
+        </div>
+      </a>
+      <a href="/colecoes" class="relative w-fit block">
+        <img src="/static/img/collections-bg.png" alt="" loading="lazy">
+        <div class="absolute right-7 bottom-8">
+          <img src="/static/img/blob2.png" alt="" loading="lazy">
+          <p class="font-hubba text-5xl absolute right-7 top-1/4">Colecões</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+{{template "footer" .}}
+<script src="/static/js/script.js"></script>
+{{end}}

@@ -1,0 +1,42 @@
+{{define "title"}}{{.SearchQuery}}{{end}}
+{{define "main"}}
+{{template "header" .}}
+
+<section class="max-w-6xl mx-auto my-16">
+
+  {{if .ProductsView}}
+  <h1 class="text-2xl font-medium my-4">Resultados para "{{.SearchQuery}}"</h1>
+  <div class="grid grid-cols-3 gap-7">
+    {{range .ProductsView}}
+    <div class="flex flex-col items-start">
+      <a href="/p/{{.Slug}}">
+        <img src="https://res.cloudinary.com/loremcommerce/image/upload/{{.Image}}" alt="{{.Name}}"
+          class="w-80 h-96 object-cover transition-all hover:brightness-75">
+      </a>
+      <a href="/p/{{.Slug}}" class="flex flex-col items-start w-72 text-wrap">
+        <span class="text-lg capitalize my-1">{{.Name}}</span>
+      </a>
+      <div class="flex flex-col gap-2">
+        {{if .Discount}}
+        <span class="text-neutral-400 text-sm line-through">R$ {{ convertPrice .Price}}</span>
+        <span class="flex items-end gap-3">
+          R$ {{calculateDiscount .Price .Discount}}
+          <span class="text-green-500">{{.Discount}}% off</span>
+        </span>
+        {{else}}
+        R$ {{convertPrice .Price}}
+        {{end}}
+      </div>
+    </div>
+    {{end}}
+  </div>
+  {{else}}
+  <div class="h-[calc(100vh-200px)]">
+    <h1 class="text-2xl font-medium my-4">Nenhum resultado encontrado para "{{.SearchQuery}}"</h1>
+    <label for="q" class="cursor-pointer px-4 py-1.5 border rounded-md">Tentar outra coisa</label>
+  </div>
+  {{end}}
+</section>
+
+{{template "footer" .}}
+{{end}}

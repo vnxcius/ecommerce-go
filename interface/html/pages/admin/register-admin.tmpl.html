@@ -1,0 +1,155 @@
+{{define "title"}}Registrar Administrador{{end}}
+{{define "main"}}
+<div class="flex">
+  {{template "sidebar" .}}
+  <section
+    class="max-w-2xl w-full h-fit px-12 py-9 m-auto border border-neutral-300 rounded-md shadow-sm dark:bg-neutral-925 dark:border-neutral-800">
+    <div class='flex items-center space-x-4 mb-10'>
+      <div class='border-r border-neutral-300 h-fit pr-5 dark:border-neutral-800'>
+        <img class='w-16 py-3 dark:hidden' src="/static/img/logoipsum-359.svg" alt='logo' draggable='false' />
+      </div>
+
+      <div>
+        <h2 class='flex flex-col'>
+          <span class='text-2xl font-semibold text-neutral-800 dark:text-neutral-400'>
+            Registrar
+          </span>
+          <span class='text-sm font-semibold text-neutral-600 dark:text-neutral-600'>
+            Faça o registro de um novo <span class="text-red-500">administrador</span>
+          </span>
+        </h2>
+      </div>
+    </div>
+    <form id="form" method="POST" novalidate class="flex flex-col gap-4">
+      <!-- Incluir CSRF Token -->
+      <input type="text" name="csrf_token" value="{{.CSRFToken}}" hidden>
+      <div>
+        <div class="flex flex-col">
+          <label for="fullName" class="text-sm font-medium mb-1 dark:text-neutral-500">Nome Completo</label>
+          {{with .Form.FieldErrors.fullName}}
+          <label for="fullName" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+        </div>
+        <input type="text" name="fullName" id="fullName" autocomplete="off" placeholder="e.g. João Fulano da Silva" autofocus
+          value="{{.Form.FullName}}"
+          class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none block w-full p-2.5
+        dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-1">
+          <div class="flex flex-col">
+            <label for="firstName" class="text-sm font-medium dark:text-neutral-500">Primeiro Nome</label>
+            {{with .Form.FieldErrors.firstName}}
+            <label for="firstName" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+          </div>
+          <input type="text" name="firstName" id="firstName" autocomplete="off" placeholder="e.g. João"
+            value="{{.Form.FirstName}}"
+            class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none w-full p-2.5
+          dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+        </div>
+        <div class="flex-1">
+          <div class="flex flex-col">
+            <label for="lastName" class="text-sm font-medium dark:text-neutral-500">Último Nome</label>
+            {{with .Form.FieldErrors.lastName}}
+            <label for="lastName" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+          </div>
+          <input type="text" name="lastName" id="lastName" autocomplete="off" placeholder="e.g. da Silva"
+            value="{{.Form.LastName}}"
+            class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none w-full p-2.5
+          dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+        </div>
+      </div>
+
+      <div>
+        <div class="flex flex-col">
+          <label for="birthDate" class="text-sm font-medium mb-1 dark:text-neutral-500">Data de Nascimento</label>
+          {{with .Form.FieldErrors.birthDate}}
+          <label for="birthDate" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+        </div>
+        <input type="date" name="birthDate" id="birthDate" placeholder="e.g. 01/01/2000" value="{{.Form.BirthDate}}"
+          class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none block w-full p-2.5
+        dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+      </div>
+
+      <div class="flex gap-4">
+        <div class="flex-1">
+          <div class="flex flex-col">
+            <label for="cpf" class="text-sm font-medium dark:text-neutral-500">CPF</label>
+            {{with .Form.FieldErrors.cpf}}
+            <label for="cpf" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+          </div>
+          <input type="tel" name="cpf" id="cpf" maxlength="14" autocomplete="off"
+            placeholder="e.g. 123.456.789-01" oninput="formatCpf()" value="{{.Form.CPF}}"
+            class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none w-full p-2.5
+          dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+        </div>
+        <div class="flex-1">
+          <div class="flex flex-col">
+            <label for="phone" class="text-sm font-medium dark:text-neutral-500">Celular</label>
+            {{with .Form.FieldErrors.phone}}
+            <label for="phone" class='text-red-500 text-sm'>{{.}}</label>
+            {{end}}
+          </div>
+          <input type="tel" name="phone" id="phone" maxlength="15" autocomplete="off" placeholder="e.g. (00) 00000-0000"
+            oninput="formatPhone()" value="{{.Form.Phone}}"
+            class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none w-full p-2.5
+          dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+        </div>
+      </div>
+
+      <div>
+        <div class="flex flex-col">
+          <label for="email" class="text-sm font-medium mb-1 dark:text-neutral-500">Email</label>
+          {{with .Form.FieldErrors.email}}
+          <label for="email" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+        </div>
+        <input type="email" name="email" id="email" placeholder="e.g. john.doe@loremcommerce.com.br"
+          value="{{.Form.Email}}"
+          class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none block w-full p-2.5
+        dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+      </div>
+
+      <div>
+        <div class="flex flex-col">
+          <label for="password" class="text-sm font-medium mb-1 dark:text-neutral-500">Senha</label>
+          {{with .Form.FieldErrors.password}}
+          <label for="password" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+        </div>
+        <input type="password" name="password" id="password" placeholder="•••••••••••••••"
+          class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none block w-full p-2.5
+        dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+      </div>
+
+      <div>
+        <div class="flex flex-col">
+          <label for="confirmPassword" class="text-sm font-medium mb-1 dark:text-neutral-500">Confirmar a senha</label>
+          {{with .Form.FieldErrors.confirmPassword}}
+          <label for="confirmPassword" class='text-red-500 text-sm'>{{.}}</label>
+          {{end}}
+        </div>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="•••••••••••••••"
+          class="bg-gray-50 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-blue-200 focus:outline-none block w-full p-2.5
+        dark:bg-neutral-900 dark:border-neutral-800 dark:focus:ring-blue-400 dark:text-neutral-200 dark:placeholder-neutral-700">
+      </div>
+
+      <button type="submit" class="w-full text-white bg-accent font-medium rounded-lg text-sm px-5 py-2.5 text-center border my-4
+      hover:bg-neutral-700 focus:ring-2 focus:outline-none focus:ring-blue-400 disabled:bg-neutral-100 disabled:text-neutral-800 disabled:border-neutral-300 disabled:cursor-not-allowed
+      dark:bg-accent-dark dark:text-neutral-800 dark:hover:bg-neutral-200">
+        Registrar
+      </button>
+
+      {{template "success" .}}
+      {{template "error" .}}
+      
+    </form>
+  </section>
+</div>
+<script src="/static/js/form-formatter.js"></script>
+<script src="/static/js/script-admin.js"></script>
+{{end}}

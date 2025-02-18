@@ -1,0 +1,10 @@
+{{define "title"}}Dashboard{{end}}
+{{define "main"}}
+<div class="flex">
+  {{template "sidebar" .}}
+  <div class="w-full h-screen flex flex-col justify-between items-center">
+    <p class="m-auto">Dashboard</p>
+  </div>
+</div>
+<script src="/static/js/script-admin.js"></script>
+{{end}}

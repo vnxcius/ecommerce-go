@@ -1,0 +1,114 @@
+{{define "footer"}}
+<footer class="bg-neutral-950 text-white w-full">
+  <div class="max-w-5xl mx-auto py-20">
+    <a href="/" class="block w-fit">
+      <img src="/static/img/logoipsum-359.svg" alt="" class="w-24">
+    </a>
+
+    <div class="grid grid-cols-4 justify-center place-items-start my-10 font-light">
+      <ul>
+        <li class="font-medium text-xl mb-3">
+          Atendimento
+        </li>
+        <li>
+          <a href="#">
+            Central de Atendimento
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Código do Consumidor
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Procon
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li class="font-medium text-xl mb-3">
+          Sobre Nós
+        </li>
+        <li>
+          <a href="#">
+            Fale Conosco
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Nossa história
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li class="font-medium text-xl mb-3">
+          Dúvidas
+        </li>
+        <li>
+          <a href="#">
+            Termos de Uso
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Políticas de Privacidade e Segurança
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Política de Trocas e Devoluções
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Vendas e Entregas
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Guia de Medidas
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li class="font-medium text-xl mb-3">
+          Redes Sociais
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="flex items-end justify-between">
+      <div>
+        <p class="font-medium text-xl">
+          Formas de pagamento
+        </p>
+        <p class="text-sm text-neutral-500 mb-3">
+          Todos os pagamentos são processados pelo MercadoPago
+        </p>
+        <div class="flex items-center gap-4">
+          <img src="/static/icons/mercadopago_icon.png" alt="MercadoPago" class="w-12 mx-1" draggable="false">
+          <img src="/static/icons/visa_icon.png" alt="Visa" class="w-12" draggable="false">
+          <img src="/static/icons/mastercard_icon.png" alt="Mastercard" class="w-12" draggable="false">
+          <img src="/static/icons/boleto_icon.png" alt="Boleto" class="w-7" draggable="false">
+          <img src="/static/icons/pix_icon.webp" alt="Pix" class="w-7" draggable="false">
+          <img src="/static/icons/elo_icon.webp" alt="Elo" class="w-12 bg-white p-1 rounded" draggable="false">
+          <img src="/static/icons/hipercard_icon.svg" alt="Hipercard" class="w-12" draggable="false">
+          <img src="/static/icons/americanexp_icon.png" alt="American Express" class="w-12" draggable="false">
+        </div>
+      </div>
+      <a href="#" class="block w-fit">
+        <img src="/static/icons/location.svg" alt="" class="brightness-[6] w-10">
+      </a>
+    </div>
+  </div>
+  <div class="bg-neutral-900 text-center py-4">
+    <p class="font-light text-sm">
+      CNPJ: 01.123.456/0001-00.
+      &copy; {{.CurrentYear}} Lorem Commerce. Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+<script src="/static/js/script.js"></script>
+{{end}}

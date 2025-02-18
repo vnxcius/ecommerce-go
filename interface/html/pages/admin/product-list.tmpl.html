@@ -1,0 +1,132 @@
+{{define "title"}}Produtos{{end}}
+
+{{define "main"}}
+<div class="flex">
+  {{template "sidebar" .}}
+  <section class="flex flex-col w-full my-8 mx-10">
+    <div class="flex items-center justify-between mb-5">
+      <a href='/produtos/cadastrar'
+        class="bg-accent rounded-md w-fit py-2 font-semibold flex justify-between items-center hover:bg-neutral-700 dark:bg-accent-dark dark:hover:bg-neutral-200">
+        <span class="mx-10 text-neutral-50 dark:text-neutral-950">
+          Cadastrar Produto
+        </span>
+        <img src="/static/icons/external.svg" alt=""
+          class="brightness-[6] -ml-5 mr-3 w-4 -scale-x-100 duration-75 dark:brightness-0 hover:" draggable='false' />
+      </a>
+      <!-- <div class='sticky top-10 right-0 my-3'>
+        <div class="bg-red-100 text-red-500 font-medium px-4 py-2 rounded-lg w-full flex items-center gap-3">
+          <span>{errMsg}</span>
+          <img src="/static/icons/danger-red-outline.svg" alt="" class="w-4" />
+        </div>
+      </div> -->
+      <span class="text-neutral-500 px-2 py-1 float-right">
+        {{len .ProductsView}} produtos
+      </span>
+    </div>
+
+    <div class="w-full">
+      <div
+        class="bg-accent text-sm text-white font-medium rounded-lg grid grid-cols-7 py-3 mb-3 sticky top-3 z-40 shadow dark:bg-neutral-900 dark:text-neutral-500">
+        <h3 class="px-5 col-span-2">
+          Informações do Produto
+        </h3>
+        <h3 class="px-5">
+          Código de Produto
+        </h3>
+        <h3 class="px-5">
+          Categoria
+        </h3>
+        <h3 class="px-5">
+          Estoque
+        </h3>
+        <h3 class="px-5">
+          Ativo
+        </h3>
+      </div>
+
+      <ul class="space-y-2 text-neutral-700">
+        <!-- <li class="bg-blue-50 flex items-center gap-5 px-4 py-2 rounded">
+          <span class="text-blue-500 font-medium">Carregando produtos...</span>
+          <div class="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </li> -->
+        {{if not .ProductsView}}
+        <li>
+          <div class="px-4 py-4 w-full">
+            <span class="bg-red-50 flex items-center justify-between gap-5 px-4 py-2 rounded">
+              <p class="text-red-500 font-medium">Nenhum produto foi encontrado.</p>
+              <img src="/static/icons/danger-red-outline.svg" alt="Erro" class="w-4" />
+            </span>
+          </div>
+        </li>
+        {{end}}
+        {{range .ProductsView}}
+        <li
+          class="grid grid-cols-7 items-center border rounded-md bg-neutral-50 hover:bg-neutral-100 dark:bg-neutral-925 dark:border-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-915">
+          <div class='flex gap-4 col-span-2 rounded-l-md p-2'>
+            <div class="cursor-pointer hover:brightness-[.7]">
+              <img src="https://res.cloudinary.com/loremcommerce/image/upload/{{.Image}}" alt="" class="w-14 h-14 object-cover rounded">
+            </div>
+            <a href="/produtos/editar/{{.ProductCode}}" class=' flex flex-col h-fit my-auto'>
+              <span class='font-semibold whitespace-nowrap overflow-hidden overflow-ellipsis md:w-44 2xl:w-80'
+                title={{.Name}}>
+                {{.Name}}
+              </span>
+              <span class="text-xs font-semibold text-neutral-400 dark:text-neutral-500">
+                R$ {{.Price}}
+              </span>
+            </a>
+          </div>
+          <div class='p-2'>
+            <div class="py-4 px-4 overflow-x-hidden whitespace-nowrap text-ellipsis w-46">
+              <span title={{.ProductCode}}>
+                {{.ProductCode}}
+              </span>
+            </div>
+          </div>
+          <div class='p-2'>
+            <div class="py-4 2xl:px-4 overflow-x-hidden whitespace-nowrap text-ellipsis w-46">
+              <span title={{.Category}}>
+                {{.Category}}
+              </span>
+            </div>
+          </div>
+          <div class='p-2'>
+            <div class="py-4 px-4">
+              <span>
+                {{.InStock}}
+              </span>
+            </div>
+          </div>
+          <div class='p-2'>
+            <div class="py-4 px-4">
+              {{if .Active}}
+              <img src="/static/icons/check.svg" alt="" class="w-6" draggable="false" />
+              {{else}}
+              <img src="/static/icons/close-circle-red.svg" alt="" class="-m-1 w-8" draggable="false" />
+              {{end}}
+            </div>
+          </div>
+          <div class=" relative  rounded-r">
+            <div class="py-4 space-x-4 w-fit mx-auto flex">
+              <a class="bg-sky-100 p-3 rounded-full hover:bg-sky-200 dark:bg-sky-400 dark:hover:bg-sky-300">
+                <div>
+                  <img src="/static/icons/edit.svg" alt=' edit' class='min-w-[16px] w-4 dark:brightness-0'
+                    draggable='false' />
+                </div>
+              </a>
+              <button class="bg-red-100 p-3
+              rounded-full cursor-pointer hover:bg-red-200 dark:bg-red-500 dark:hover:bg-red-400">
+                <img src="/static/icons/trash.svg" alt='delete' class='min-w-[16px] w-4 dark:brightness-0'
+                  draggable='false' />
+              </button>
+            </div>
+          </div>
+        </li>
+        {{end}}
+      </ul>
+
+    </div>
+  </section>
+</div>
+<script src="/static/js/script-admin.js"></script>
+{{end}}
