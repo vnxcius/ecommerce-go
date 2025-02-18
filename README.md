@@ -61,3 +61,7 @@ HASH_SALT="abc123"
 DEFAULT_ADMIN_EMAIL="example"
 DEFAULT_ADMIN_PASSWORD="example"
 ```
+
+<!-- ERD -->
+#### ERD
+![](./ERD.png)
